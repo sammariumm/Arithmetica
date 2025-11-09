@@ -19,6 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import javax.swing.*;
 public class MethMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new BackgroundSlideshow().start());
