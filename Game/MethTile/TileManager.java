@@ -14,8 +14,8 @@ import Game.MethMain.MethGamePanel;
 public class TileManager {
 
     MethGamePanel gp;
-    Tile[] tile;
-    int mapTileNum[][];
+    public Tile[] tile;
+    public int mapTileNum[][];
 
     public TileManager(MethGamePanel gp) {
 
@@ -25,7 +25,7 @@ public class TileManager {
         mapTileNum = new int [gp.maxScreenCol][gp.maxScreenrow];
 
         getTileImage();
-        loadMap();
+        loadMap("Game/Res/Maps/map01.txt");
 
     }
     
@@ -43,12 +43,15 @@ public class TileManager {
             
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(t2);
+            tile[1].collision = true;
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(t3);
+            tile[2].collision = true;
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(t4);
+            tile[2].collision = true;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,11 +59,11 @@ public class TileManager {
 
     }
 
-    public void loadMap() {
+    public void loadMap(String filePath) {
 
         try {
 
-            InputStream is = new FileInputStream("Game/Res/Maps/map01.txt");
+            InputStream is = new FileInputStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -82,7 +85,6 @@ public class TileManager {
                 if(col == gp.maxScreenCol) {
                     col = 0;
                     row++;
-
                 }
             }
             br.close();

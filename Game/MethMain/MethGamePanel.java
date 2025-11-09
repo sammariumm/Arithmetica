@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JPanel;
 
 import Game.Entity.Player;
@@ -24,12 +25,13 @@ public class MethGamePanel extends JPanel implements Runnable{
     // Frames natin
     int FPS = 60;
 
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     MethHandler methH = new MethHandler();
     Thread gameThread;
-    Player player = new Player (this,methH);
 
-    
+    public CollisionChecker collisionChecker = new CollisionChecker(this);
+
+    Player player = new Player (this,methH);
 
     public MethGamePanel() {
 
