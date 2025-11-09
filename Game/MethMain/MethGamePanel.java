@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import Game.Entity.Entity;
 import Game.Entity.Player;
 import Game.MethTile.TileManager;
 
@@ -22,16 +23,26 @@ public class MethGamePanel extends JPanel implements Runnable{
     public final int screenWidth = tileSize * maxScreenCol;
     public final int screenHeight = tileSize * maxScreenrow;
 
+    // World settings
+    public final int maxWorldCol = 40;
+    public final int maxWorldRow = 40;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
     // Frames natin
     int FPS = 60;
 
     public TileManager tileM = new TileManager(this);
     MethHandler methH = new MethHandler();
+    AssetSetter aSetter = new AssetSetter(this);
     Thread gameThread;
+
+    // Entities and Objects
+    public Entity npc[] = new Entity[10];
 
     public CollisionChecker collisionChecker = new CollisionChecker(this);
 
-    Player player = new Player (this,methH);
+    public Player player = new Player (this,methH);
 
     public MethGamePanel() {
 
@@ -41,6 +52,11 @@ public class MethGamePanel extends JPanel implements Runnable{
         this.addKeyListener(methH);
         this.setFocusable(true);
 
+    }
+
+    public void setupGame()
+    {
+        aSetter.setNPC();
     }
     
     public void startGameThread() {
@@ -146,6 +162,16 @@ public class MethGamePanel extends JPanel implements Runnable{
 
         tileM.draw(g2);
 
+        // npc
+        for(int i = 0; i < npc.length; i++)
+        {
+            if(npc[i] != null)
+            {
+                npc[i].draw(g2);
+            }
+        }
+
+        // player
         player.draw(g2);
 
         g2.dispose();

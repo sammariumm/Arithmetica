@@ -4,9 +4,6 @@ package Game.Entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 import Game.MethMain.MethGamePanel;
 import Game.MethMain.MethHandler;
@@ -14,16 +11,22 @@ import Game.MethMain.MethHandler;
 
 public class Player extends Entity{
     
-    MethGamePanel gp;
     MethHandler methH;
 
-    public Player(MethGamePanel gp, MethHandler methH) {
+    public final int screenX;
+    public final int screenY;
 
-        this.gp = gp;
+    public Player(MethGamePanel gp, MethHandler methH) {
+        
+        super(gp);
+        
         this.methH = methH;
 
         // for default square set as x = 0, y = 0, gp.tileSize, gp.tileSize
         solidArea = new Rectangle(8, 16, 32, 32); 
+
+        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
+        screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         setDefaultValues();
         getPlayerImage();
@@ -32,8 +35,8 @@ public class Player extends Entity{
 
     public void setDefaultValues() {
 
-        x = 100;
-        y = 100;
+        worldX = 100;
+        worldY = 100;
         speed = 4;
         direction = "down";
 
@@ -41,30 +44,26 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
 
-        try {
+            //File f1 = new File("Game/Res/player/manyakis_up_1.png");
+            //File f2 = new File("Game/Res/player/manyakis_up_2.png");
+            //File f3 = new File("Game/Res/player/manyakis_down_1.png");
+            //File f4 = new File("Game/Res/player/manyakis_down_2.png");
+           //File f5 = new File("Game/Res/player/manyakis_left_1.png");
+            //File f6 = new File("Game/Res/player/manyakis_left_2.png");
+           // File f7 = new File("Game/Res/player/manyakis_right_1.png");
+           //File f8 = new File("Game/Res/player/manyakis_right_2.png");
 
-            File f1 = new File("Game/Res/player/manyakis_up_1.png");
-            File f2 = new File("Game/Res/player/manyakis_up_2.png");
-            File f3 = new File("Game/Res/player/manyakis_down_1.png");
-            File f4 = new File("Game/Res/player/manyakis_down_2.png");
-            File f5 = new File("Game/Res/player/manyakis_left_1.png");
-            File f6 = new File("Game/Res/player/manyakis_left_2.png");
-            File f7 = new File("Game/Res/player/manyakis_right_1.png");
-            File f8 = new File("Game/Res/player/manyakis_right_2.png");
-
-            up1 = ImageIO.read(f1);
-            up2 = ImageIO.read(f2);
-            down1 = ImageIO.read(f3);
-            down2 = ImageIO.read(f4);
-            left1 = ImageIO.read(f5);
-            left2 = ImageIO.read(f6);
-            right1 = ImageIO.read(f7);
-            right2 = ImageIO.read(f8);
-
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+            up1 = setup("/Game/Res/player/manyakis_up_1");
+            up2 = setup("/Game/Res/player/manyakis_up_2");
+            down1 = setup("/Game/Res/player/manyakis_down_1");
+            down2 = setup("/Game/Res/player/manyakis_down_2");
+            left1 = setup("/Game/Res/player/manyakis_left_1");
+            left2 = setup("/Game/Res/player/manyakis_left_2");
+            right1 = setup("/Game/Res/player/manyakis_right_1");
+            right2 = setup("/Game/Res/player/manyakis_right_2");
     }
+
+    
 
     public void update() {
 
@@ -93,16 +92,16 @@ public class Player extends Entity{
                 switch(direction)
                 {
                     case "up": 
-                        y -= speed;
+                        worldY -= speed;
                         break;
                     case "down":
-                        y += speed;
+                        worldY += speed;
                         break;
                     case "left":
-                        x -= speed;
+                        worldX -= speed;
                         break;
                     case "right":
-                        x += speed;
+                        worldX += speed;
                         break;
                 }
             }
@@ -177,6 +176,6 @@ public class Player extends Entity{
             default:
                 break;
         }
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 }
