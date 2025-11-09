@@ -53,3 +53,272 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Invalid projec
 	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.createOrImportProject(SmartImportJob.java:594)
 	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:542)
 	... 2 more
+!SESSION 2025-11-10 01:34:36.557 -----------------------------------------------
+eclipse.buildId=4.37.0.20250905-1455
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-10 01:34:38.579
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-11-10 01:34:38.793
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.31.0 (276) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-10 01:34:45.934
+!MESSAGE Logback config file: C:\SCHOOL-RELATED\NCP3105\ARITHMETICA\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-11-10 01:34:51.079
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\admin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2025-11-10 01:37:10.117
+!MESSAGE C:\Users\admin\git\sammariumm\Arithmetica\.git\.probe-42978b28-ceb9-4ed4-89a6-ac738a507e10 (Access is denied)
+!STACK 0
+java.io.FileNotFoundException: C:\Users\admin\git\sammariumm\Arithmetica\.git\.probe-42978b28-ceb9-4ed4-89a6-ac738a507e10 (Access is denied)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+	at org.eclipse.jgit.util.io.SilentFileInputStream.<init>(SilentFileInputStream.java:31)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:89)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:48)
+	at org.eclipse.jgit.util.FS$FileStoreAttributes.read(FS.java:547)
+	at org.eclipse.jgit.util.FS$FileStoreAttributes.measureMinimalRacyInterval(FS.java:498)
+	at org.eclipse.jgit.util.FS$FileStoreAttributes.lambda$2(FS.java:425)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+
+!ENTRY org.eclipse.mylyn.github.ui 4 0 2025-11-10 01:37:10.118
+!MESSAGE Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+!STACK 0
+java.lang.reflect.InvocationTargetException: Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:212)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	... 2 more
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+Root exception:
+org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+
+!ENTRY org.eclipse.mylyn.github.ui 4 0 2025-11-10 01:37:39.569
+!MESSAGE Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+!STACK 0
+java.lang.reflect.InvocationTargetException: Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:212)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	... 2 more
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+Root exception:
+org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+
+!ENTRY org.eclipse.mylyn.github.ui 4 0 2025-11-10 01:38:05.590
+!MESSAGE Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+!STACK 0
+java.lang.reflect.InvocationTargetException: Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:212)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	... 2 more
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+Root exception:
+org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+!SESSION 2025-11-10 01:46:23.099 -----------------------------------------------
+eclipse.buildId=4.37.0.20250905-1455
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-10 01:46:26.100
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-11-10 01:46:26.311
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.31.0 (276) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-11-10 01:46:35.759
+!MESSAGE Logback config file: C:\SCHOOL-RELATED\NCP3105\ARITHMETICA\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-11-10 01:46:40.460
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\admin'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.mylyn.github.ui 4 0 2025-11-10 01:47:01.608
+!MESSAGE Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+!STACK 0
+java.lang.reflect.InvocationTargetException: Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:212)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	... 2 more
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+Root exception:
+org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+
+!ENTRY org.eclipse.ui.ide 4 0 2025-11-10 01:47:59.008
+!MESSAGE Could not import project located at C:\SCHOOL-RELATED\NCP3105\ARITHMETICA
+!STACK 0
+org.eclipse.ui.internal.wizards.datatransfer.CouldNotImportProjectException: Could not import project located at C:\SCHOOL-RELATED\NCP3105\ARITHMETICA
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:555)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:246)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'ARITHMETICA' at 'file:/C:/SCHOOL-RELATED/NCP3105/ARITHMETICA' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:219)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:316)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:302)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.createOrImportProject(SmartImportJob.java:594)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:542)
+	... 2 more
+
+!ENTRY org.eclipse.ui.ide 4 0 2025-11-10 01:50:25.551
+!MESSAGE Could not import project located at C:\SCHOOL-RELATED\NCP3105\ARITHMETICA
+!STACK 0
+org.eclipse.ui.internal.wizards.datatransfer.CouldNotImportProjectException: Could not import project located at C:\SCHOOL-RELATED\NCP3105\ARITHMETICA
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:555)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:246)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'ARITHMETICA' at 'file:/C:/SCHOOL-RELATED/NCP3105/ARITHMETICA' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:219)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:316)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:302)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.createOrImportProject(SmartImportJob.java:594)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:542)
+	... 2 more
+
+!ENTRY org.eclipse.mylyn.github.ui 4 0 2025-11-10 01:50:55.100
+!MESSAGE Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+!STACK 0
+java.lang.reflect.InvocationTargetException: Clone operation failed, with failed cleanup: Could not delete file C:\Users\admin\git\sammariumm\Arithmetica. Manual cleanup may be required.
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:212)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	... 2 more
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
+Root exception:
+org.eclipse.jgit.api.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:249)
+	at org.eclipse.jgit.api.CloneCommand.fetch(CloneCommand.java:322)
+	at org.eclipse.jgit.api.CloneCommand.call(CloneCommand.java:191)
+	at org.eclipse.egit.core.op.CloneOperation.run(CloneOperation.java:194)
+	at org.eclipse.mylyn.internal.github.ui.RepositoryImportWizard$1.run(RepositoryImportWizard.java:120)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: Remote branch 'refs/heads/master' not found in upstream origin
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:157)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:105)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1458)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:238)
+	... 5 more
