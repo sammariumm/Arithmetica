@@ -1,8 +1,8 @@
 package Game.MethMain;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.*;
 public class MethMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new BackgroundSlideshow().start());
@@ -150,11 +150,11 @@ class FadePanel extends JPanel {
 }
 class PlayWindow extends JFrame {
     public PlayWindow() {
-       JFrame window = new JFrame();
+        JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Meth");
-        MethGamePanel gamePanel= new MethGamePanel();
+        MethGamePanel gamePanel = new MethGamePanel();
         window.add(gamePanel);
         window.pack();
         window.setLocationRelativeTo(null);
@@ -164,12 +164,146 @@ class PlayWindow extends JFrame {
 }
 class CreditsWindow extends JFrame {
     public CreditsWindow() {
-        setTitle("Play");
+        setTitle("Credits");
         setSize(960, 576);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        JLabel label = new JLabel("SHERA LUBO DASS NOBI", SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 24));
-        add(label);
+        setContentPane(new CreditsPanel());
+    }
+    private static class CreditsPanel extends JPanel {
+        private final String[] credits = {
+            "NCP 3105 / NCP 3106 FINAL PROJECT",
+            "",
+            "",
+            "",
+            "Arithmetica: An RPG-Like Math Game",
+            "",
+            "",
+            "",
+            "Created by:",
+            "",
+            "Dass, Archer Troy D.",
+            "Francisco, Ljuvojevic G., Jr.",
+            "Manzano, Shera Mae R.",
+            "Masangya, Novie Micoh B.",
+            "",
+            "3CPE-1B",
+            "",
+            "",
+            "",
+            "Submitted to:",
+            "",
+            "Engr. John Vincent R. Trinidad",
+            "Engr. Benedict N. Zurbito",
+            "",
+            "Professors",
+            "",
+            "",
+            "",
+            "Thanks for playing!"
+        };
+        private int y;
+        private javax.swing.Timer timer;
+        private ImageIcon backgroundGif;
+        private ImageIcon logoIcon;
+        private Font retroFont;
+        private float fadeToBlack = 0f;
+        private boolean finished = false;
+        CreditsPanel() {
+            backgroundGif = new ImageIcon("C:/Arithmetica/Game/Res/background_image_4.gif");
+            logoIcon = new ImageIcon("C:/Arithmetica/Game/Res/logo.png");
+            setDoubleBuffered(true);
+            setBackground(Color.BLACK);
+            setForeground(Color.WHITE);
+            try {
+                retroFont = Font.createFont(Font.TRUETYPE_FONT,
+                        new java.io.File("C:/Arithmetica/Game/Res/PressStart2P.ttf"))
+                        .deriveFont(Font.PLAIN, 16);
+                GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(retroFont);
+            } catch (Exception e) {
+                retroFont = new Font("Monospaced", Font.BOLD, 18);
+                System.err.println("8-bit font not found, using fallback font.");
+            }
+            y = 576;
+            timer = new javax.swing.Timer(16, e -> updateAnimation());
+            timer.setCoalesce(true);
+            timer.start();
+        }
+        private void updateAnimation() {
+            if (!finished) {
+                y -= 2;
+                int totalScrollHeight = y + credits.length * getFontMetrics(retroFont).getHeight() + 400;
+                if (totalScrollHeight < 200) {
+                    finished = true;
+                }
+            } else if (fadeToBlack < 1f) {
+                fadeToBlack += 0.01f;
+            } else {
+                timer.stop();
+            }
+            repaint();
+        }
+        private float clamp(float val, float min, float max) {
+            return Math.max(min, Math.min(max, val));
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            int width = getWidth();
+            int height = getHeight();
+            if (backgroundGif != null) {
+                g2.drawImage(backgroundGif.getImage(), 0, 0, width, height, this);
+            }
+            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            g2.setFont(retroFont);
+            g2.setColor(Color.WHITE);
+            int lineHeight = g2.getFontMetrics().getHeight();
+            int centerX = width / 2;
+            for (int i = 0; i < credits.length; i++) {
+                int textWidth = g2.getFontMetrics().stringWidth(credits[i]);
+                int x = centerX - textWidth / 2;
+                int yPos = y + i * lineHeight;
+                float alpha;
+                if (yPos < 100)
+                    alpha = (float) yPos / 100f;
+                else if (yPos > height - 150)
+                    alpha = (float) (height - yPos) / 100f;
+                else
+                    alpha = 1f;
+                alpha = clamp(alpha, 0f, 1f);
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                g2.drawString(credits[i], x, yPos);
+            }
+            if (logoIcon != null) {
+                int logoWidth = logoIcon.getIconWidth();
+                int logoHeight = logoIcon.getIconHeight();
+                int logoStartY = y + credits.length * lineHeight + 60;
+                int logoX = (width - logoWidth) / 2;
+                float alpha;
+                if (logoStartY < 100)
+                    alpha = (float) logoStartY / 100f;
+                else if (logoStartY > height - 150)
+                    alpha = (float) (height - logoStartY) / 100f;
+                else
+                    alpha = 1f;
+                alpha = clamp(alpha, 0f, 1f);
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                g2.drawImage(logoIcon.getImage(), logoX, logoStartY, this);
+                String footer = "© 2025 Arithmetica. All Rights Reserved.";
+                g2.setFont(retroFont.deriveFont(Font.PLAIN, 14f));
+                int footerWidth = g2.getFontMetrics().stringWidth(footer);
+                int footerY = logoStartY + logoHeight + 25;
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                g2.drawString(footer, (width - footerWidth) / 2, footerY);
+            }
+            if (fadeToBlack > 0f) {
+                g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, clamp(fadeToBlack, 0f, 1f)));
+                g2.setColor(Color.BLACK);
+                g2.fillRect(0, 0, width, height);
+            }
+            g2.dispose();
+        }
     }
 }
