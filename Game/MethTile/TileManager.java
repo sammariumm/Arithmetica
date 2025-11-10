@@ -20,7 +20,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[10];
+        tile = new Tile[20];
         mapTileNum = new int [gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -34,12 +34,18 @@ public class TileManager {
             
             File t0 = new File("Game/Res/Tiles/main_grass_16.png");
             File t1 = new File("Game/Res/Tiles/cobble_wall_16.png");
-            File t2 = new File("Game/Res/Tiles/water_16.png");
+            File t2 = new File("Game/Res/Tiles/final_water_16.png");
             File t3 = new File("Game/Res/Tiles/final_rock_16.png");     
             File t4 = new File("Game/Res/Tiles/tree_16.png");     
             File t5 = new File("Game/Res/Tiles/grass_edge_16.png");     
             File t6 = new File("Game/Res/Tiles/cliff_side_16.png");     
             File t7 = new File("Game/Res/Tiles/autumn_leave_16.png");     
+            File t8 = new File("Game/Res/Tiles/leaves_on_water_16.png");
+            File t9 = new File("Game/Res/Tiles/lily_pad_16.png");     
+            File t10 = new File("Game/Res/Tiles/top_left_autumn_tree.png");
+            File t11 = new File("Game/Res/Tiles/top_right_autumn_tree.png");
+            File t12 = new File("Game/Res/Tiles/bottom_left_autumn_tree.png");     
+            File t13 = new File("Game/Res/Tiles/bottom_right_autumn_tree.png"); 
             
             tile[0] = new Tile(); // malupet na grass
             tile[0].image = ImageIO.read(t0);
@@ -70,6 +76,28 @@ public class TileManager {
             tile[7] = new Tile(); //madahon dahon na grass
             tile[7].image = ImageIO.read(t7);
 
+            tile[8] = new Tile(); //madahon dahon na tubeg
+            tile[8].image = ImageIO.read(t8);
+            tile[8].collision = true;
+
+            tile[9] = new Tile(); //lilipad :)
+            tile[9].image = ImageIO.read(t9);
+            tile[9].collision = true;
+            
+            tile[10].image = ImageIO.read(t10);
+            tile[10].collision = true;
+
+            tile[11] = new Tile(); //malaki puno top right
+            tile[11].image = ImageIO.read(t11);
+            tile[11].collision = true;
+
+            tile[12] = new Tile(); //malaki puno bottom left
+            tile[12].image = ImageIO.read(t12);
+            tile[12].collision = true;
+
+            tile[13] = new Tile(); //malaki puno bottom right
+            tile[13].image = ImageIO.read(t13);
+            tile[13].collision = true;
 
         } catch (Exception e) {
             e.printStackTrace();
