@@ -20,7 +20,7 @@ public class TileManager {
 
         this.gp = gp;
 
-        tile = new Tile[20];
+        tile = new Tile[50];
         mapTileNum = new int [gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
@@ -46,6 +46,15 @@ public class TileManager {
             File t11 = new File("Game/Res/Tiles/top_right_autumn_tree.png");
             File t12 = new File("Game/Res/Tiles/bottom_left_autumn_tree.png");     
             File t13 = new File("Game/Res/Tiles/bottom_right_autumn_tree.png"); 
+            File t14 = new File("Game/Res/Tiles/grass_bottom_left_16.png");     
+            File t15 = new File("Game/Res/Tiles/grass_bottom_right_16.png");     
+            File t16 = new File("Game/Res/Tiles/grass_left_edge_16.png");     
+            File t17 = new File("Game/Res/Tiles/grass_micro_bottom_left_16.png");
+            File t18 = new File("Game/Res/Tiles/grass_micro_bottom_right_16.png");     
+            File t19 = new File("Game/Res/Tiles/grass_right_edge_16.png");
+            File t20 = new File("Game/Res/Tiles/grass_top_edge_16.png");
+            File t21 = new File("Game/Res/Tiles/grass_top_left_edge_16.png");     
+            File t22 = new File("Game/Res/Tiles/grass_top_right_edge_16.png"); 
             
             tile[0] = new Tile(); // malupet na grass
             tile[0].image = ImageIO.read(t0);
@@ -84,7 +93,7 @@ public class TileManager {
             tile[9].image = ImageIO.read(t9);
             tile[9].collision = true;
             
-            tile[10] = new Tile();
+            tile[10] = new Tile(); //top left ng puno
             tile[10].image = ImageIO.read(t10);
             tile[10].collision = true;
 
@@ -99,6 +108,33 @@ public class TileManager {
             tile[13] = new Tile(); //malaki puno bottom right
             tile[13].image = ImageIO.read(t13);
             tile[13].collision = true;
+
+            tile[14] = new Tile(); //grass_bottom_left_16.png
+            tile[14].image = ImageIO.read(t14);
+            
+            tile[15] = new Tile(); //grass_bottom_right_16
+            tile[15].image = ImageIO.read(t15);
+
+            tile[16] = new Tile(); //grass_left_edge_16
+            tile[16].image = ImageIO.read(t16);
+
+            tile[17] = new Tile(); //grass_micro_bottom_left_16
+            tile[17].image = ImageIO.read(t17);
+
+            tile[18] = new Tile(); //grass_micro_bottom_right_16
+            tile[18].image = ImageIO.read(t18);
+
+            tile[19] = new Tile(); //grass_right_edge_16
+            tile[19].image = ImageIO.read(t19);
+            
+            tile[20] = new Tile(); //top_edge_16
+            tile[20].image = ImageIO.read(t20);
+
+            tile[21] = new Tile(); //top_left_edge_16
+            tile[21].image = ImageIO.read(t21);
+
+            tile[22] = new Tile(); //top_right_edge_16
+            tile[22].image = ImageIO.read(t22);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -120,12 +156,15 @@ public class TileManager {
             while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
 
                 String line = br.readLine();
+                
 
                 while (col < gp.maxWorldCol) {
                     
                     String number[] = line.split(" ");
 
                     int num = Integer.parseInt(number[col]);
+
+
 
                     mapTileNum[col][row] = num;
                     col++;
