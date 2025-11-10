@@ -32,43 +32,43 @@ public class TileManager {
 
         try {
             
-            File t1 = new File("Game/Res/Tiles/main_grass_16.png");
-            File t2 = new File("Game/Res/Tiles/cobble_wall_16.png");
-            File t3 = new File("Game/Res/Tiles/water_16.png");
-            File t4 = new File("Game/Res/Tiles/final_rock_16.png");     
-            File t5 = new File("Game/Res/Tiles/tree_16.png");     
-            File t6 = new File("Game/Res/Tiles/grass_edge_16.png");     
-            File t7 = new File("Game/Res/Tiles/cliff_side_16.png");     
-            File t8 = new File("Game/Res/Tiles/autumn_leave_16.png");     
+            File t0 = new File("Game/Res/Tiles/main_grass_16.png");
+            File t1 = new File("Game/Res/Tiles/cobble_wall_16.png");
+            File t2 = new File("Game/Res/Tiles/water_16.png");
+            File t3 = new File("Game/Res/Tiles/final_rock_16.png");     
+            File t4 = new File("Game/Res/Tiles/tree_16.png");     
+            File t5 = new File("Game/Res/Tiles/grass_edge_16.png");     
+            File t6 = new File("Game/Res/Tiles/cliff_side_16.png");     
+            File t7 = new File("Game/Res/Tiles/autumn_leave_16.png");     
             
             tile[0] = new Tile(); // malupet na grass
-            tile[0].image = ImageIO.read(t1);
+            tile[0].image = ImageIO.read(t0);
             
             tile[1] = new Tile(); // cobble
-            tile[1].image = ImageIO.read(t2);
+            tile[1].image = ImageIO.read(t1);
             tile[1].collision = true;
 
             tile[2] = new Tile(); // water
-            tile[2].image = ImageIO.read(t3);
+            tile[2].image = ImageIO.read(t2);
             tile[2].collision = true;
 
             tile[3] = new Tile(); // bato
-            tile[3].image = ImageIO.read(t4);
+            tile[3].image = ImageIO.read(t3);
             tile[3].collision = true;
 
             tile[4] = new Tile(); //puno
-            tile[4].image = ImageIO.read(t5);
+            tile[4].image = ImageIO.read(t4);
             tile[4].collision = true;
             
             tile[5] = new Tile(); //dulo ng grass
-            tile[5].image = ImageIO.read(t6);
+            tile[5].image = ImageIO.read(t5);
 
             tile[6] = new Tile(); //cliff_side
-            tile[6].image = ImageIO.read(t7);
+            tile[6].image = ImageIO.read(t6);
             tile[6].collision = true;
 
             tile[7] = new Tile(); //madahon dahon na grass
-            tile[7].image = ImageIO.read(t8);
+            tile[7].image = ImageIO.read(t7);
 
 
         } catch (Exception e) {
