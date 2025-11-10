@@ -42,13 +42,34 @@ public class UI
 
     public void drawPlayerLife()
     {
+        gp.player.life = 3;
+        
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
         int i = 0;
 
+        // draw max
         while(i < gp.player.maxLife/2)
         {
-            g2.drawImage(heart_full, x, y, null);
+            g2.drawImage(heart_empty, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // reset
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
+        i = 0;
+
+        // draw current
+        while(i < gp.player.life)
+        {
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if(i < gp.player.life)
+            {
+                g2.drawImage(heart_full, x, y, null);
+            }
             i++;
             x += gp.tileSize;
         }
