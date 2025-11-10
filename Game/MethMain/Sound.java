@@ -13,7 +13,7 @@ public class Sound
 
     public Sound()
     {
-        soundURL[0] = getClass().getResource("/Game/Res/Sound/music.wav");
+        soundURL[0] = getClass().getResource("/Game/Res/Sound/LittlerootTown.au");
     }
 
     public void setFile(int i)
