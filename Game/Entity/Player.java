@@ -90,6 +90,10 @@ public class Player extends Entity{
             collisionOn = false;
             gp.collisionChecker.checkTile(this);
 
+            // Check npc collision
+            int npcIndex = gp.collisionChecker.checkEntity(this, gp.npc);
+            interactNPC(npcIndex);
+
             // If collision is false, player can move else not
             if(collisionOn == false)
             {
@@ -123,6 +127,14 @@ public class Player extends Entity{
                 }
                 spriteCounter = 0;
             }
+        }
+    }
+
+    public void interactNPC(int i)
+    {
+        if(i != 999)
+        {
+            
         }
     }
 

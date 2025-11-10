@@ -158,6 +158,14 @@ public class MethGamePanel extends JPanel implements Runnable{
         
         player.update();
 
+        for(int i = 0; i < npc.length; i++)
+        {
+            if(npc[i] != null)
+            {
+                npc[i].update();
+            }
+        }
+
     }
 
     public void paintComponent(Graphics g) {

@@ -19,9 +19,12 @@ public class Entity {
 
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     public String direction;
+    public String name;
 
     public int spriteCounter = 0;
     public int spriteNum = 1;
+
+    public int solidAreaDefaultX, solidAreaDefaultY;
 
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public boolean collisionOn = false;
@@ -29,10 +32,56 @@ public class Entity {
     // Character state
     public int maxLife;
     public int life;
+    public int actionLockCounter = 0;
 
     public Entity(MethGamePanel gp)
     {
         this.gp = gp;
+    }
+
+    public void setAction()
+    {
+
+    }
+
+    public void update()
+    {
+        setAction();
+        collisionOn = false;
+        gp.collisionChecker.checkTile(this);
+
+        if(collisionOn == false)
+            {
+                switch(direction)
+                {
+                    case "up": 
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+                }
+            }
+
+            spriteCounter++;
+
+            if(spriteCounter > 14) {
+
+                if(spriteNum == 1) {
+                    spriteNum = 2;
+                }
+
+                else if(spriteNum == 2) {
+                    spriteNum = 1;
+                }
+                spriteCounter = 0;
+            }
     }
 
     public void draw(Graphics2D g2)

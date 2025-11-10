@@ -37,7 +37,7 @@ public class TileManager {
             File t2 = new File("Game/Res/Tiles/final_water_16.png");
             File t3 = new File("Game/Res/Tiles/final_rock_16.png");     
             File t4 = new File("Game/Res/Tiles/tree_16.png");     
-            File t5 = new File("Game/Res/Tiles/grass_edge_16.png");     
+            File t5 = new File("Game/Res/Tiles/grass_bottom_edge_16.png");     
             File t6 = new File("Game/Res/Tiles/cliff_side_16.png");     
             File t7 = new File("Game/Res/Tiles/autumn_leave_16.png");     
             File t8 = new File("Game/Res/Tiles/leaves_on_water_16.png");
@@ -84,6 +84,7 @@ public class TileManager {
             tile[9].image = ImageIO.read(t9);
             tile[9].collision = true;
             
+            tile[10] = new Tile();
             tile[10].image = ImageIO.read(t10);
             tile[10].collision = true;
 
