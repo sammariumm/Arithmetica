@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.JPanel;
 
@@ -44,6 +47,9 @@ public class MethGamePanel extends JPanel implements Runnable{
 
     // Entities and Objects
     public Entity npc[] = new Entity[10];
+    public Entity monster[] = new Entity[10];
+
+    ArrayList <Entity> entityList = new ArrayList<>();
 
     public CollisionChecker collisionChecker = new CollisionChecker(this);
 
@@ -63,6 +69,7 @@ public class MethGamePanel extends JPanel implements Runnable{
     {
         playMusic(0);
         aSetter.setNPC();
+        aSetter.setMonster();
     }
     
     public void startGameThread() {
@@ -166,6 +173,14 @@ public class MethGamePanel extends JPanel implements Runnable{
             }
         }
 
+        for(int i = 0; i < monster.length; i++)
+        {
+            if(monster[i] != null)
+            {
+                monster[i].update();
+            }
+        }
+
     }
 
     public void paintComponent(Graphics g) {
@@ -176,6 +191,44 @@ public class MethGamePanel extends JPanel implements Runnable{
 
         tileM.draw(g2);
 
+        // add entities
+        entityList.add(player);
+        
+        for(int i = 0; i < npc.length; i++)
+        {
+            if(npc[i] != null)
+            {
+                entityList.add(npc[i]); 
+            }
+        }
+
+        for(int i = 0; i < monster.length; i++)
+        {
+            if(monster[i] != null)
+            {
+                entityList.add(monster[i]);
+            }
+        }
+
+        // sort
+        Collections.sort(entityList, new Comparator<Entity>() {
+            @Override
+            public int compare(Entity e1, Entity e2)
+            {
+                int result = Integer.compare(e1.worldY, e2.worldY);
+                return result;
+            }
+        });
+
+        // draw entities
+        for(int i = 0; i < entityList.size(); i++)
+        {
+            entityList.get(i).draw(g2);
+        }
+
+        // empty entity list
+        entityList.clear();
+
         ui.draw(g2);
 
         // npc
@@ -184,6 +237,15 @@ public class MethGamePanel extends JPanel implements Runnable{
             if(npc[i] != null)
             {
                 npc[i].draw(g2);
+            }
+        }
+
+        // monster
+        for(int i = 0; i < monster.length; i++)
+        {
+            if(monster[i] != null)
+            {
+                monster[i].draw(g2);
             }
         }
 

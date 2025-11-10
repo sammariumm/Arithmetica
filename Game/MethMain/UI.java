@@ -3,9 +3,9 @@ package Game.MethMain;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import Game.Object.SuperObject;
 import Game.Object.OBJ_Heart;
 import Game.MethMain.MethGamePanel;
+import Game.Entity.Entity;
 
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -24,7 +24,7 @@ public class UI
         font = new Font("Arial", Font.PLAIN, 40);
 
         // create new obj
-        SuperObject heart = new OBJ_Heart(gp);
+        Entity heart = new OBJ_Heart(gp);
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_empty = heart.image3;
@@ -33,23 +33,21 @@ public class UI
     public void draw(Graphics2D g2)
     {
         this.g2 = g2;
-        g2.setFont(font);
-        g2.setColor(Color.white);
+        //g2.setFont(font);
+        //g2.setColor(Color.white);
 
         // game state
         drawPlayerLife();
     }
 
     public void drawPlayerLife()
-    {
-        gp.player.life = 3;
-        
+    {  
         int x = gp.tileSize / 2;
         int y = gp.tileSize / 2;
         int i = 0;
 
         // draw max
-        while(i < gp.player.maxLife/2)
+        while(i < gp.player.maxLife / 2)
         {
             g2.drawImage(heart_empty, x, y, null);
             i++;

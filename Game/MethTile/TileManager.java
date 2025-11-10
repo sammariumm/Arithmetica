@@ -46,11 +46,11 @@ public class TileManager {
             File t11 = new File("Game/Res/Tiles/top_right_autumn_tree.png");
             File t12 = new File("Game/Res/Tiles/bottom_left_autumn_tree.png");     
             File t13 = new File("Game/Res/Tiles/bottom_right_autumn_tree.png"); 
-            File t14 = new File("Game/Res/Tiles/grass_bottom_left_16.png");     
-            File t15 = new File("Game/Res/Tiles/grass_bottom_right_16.png");     
+            File t14 = new File("Game/Res/Tiles/grass_bottom_left_edge_16.png");     
+            File t15 = new File("Game/Res/Tiles/grass_bottom_right_edge_16.png");     
             File t16 = new File("Game/Res/Tiles/grass_left_edge_16.png");     
-            File t17 = new File("Game/Res/Tiles/grass_micro_bottom_left_16.png");
-            File t18 = new File("Game/Res/Tiles/grass_micro_bottom_right_16.png");     
+            File t17 = new File("Game/Res/Tiles/grass_micro_bottom_left_edge_16.png");
+            File t18 = new File("Game/Res/Tiles/grass_micro_bottom_right_edge_16.png");     
             File t19 = new File("Game/Res/Tiles/grass_right_edge_16.png");
             File t20 = new File("Game/Res/Tiles/grass_top_edge_16.png");
             File t21 = new File("Game/Res/Tiles/grass_top_left_edge_16.png");     

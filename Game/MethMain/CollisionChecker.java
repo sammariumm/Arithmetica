@@ -85,36 +85,25 @@ public class CollisionChecker
                 {
                     case "up":
                         e.solidArea.y -= e.speed;
-                        if(e.solidArea.intersects(target[i].solidArea))
-                        {
-                            e.collisionOn = true;
-                            index = i;
-                        }
                         break;
                     case "down":
                         e.solidArea.y += e.speed;
-                        if(e.solidArea.intersects(target[i].solidArea))
-                        {
-                            e.collisionOn = true;
-                            index = i;
-                        }
                         break;
                     case "left":
                         e.solidArea.x -= e.speed;
-                        if(e.solidArea.intersects(target[i].solidArea))
-                        {
-                            e.collisionOn = true;
-                            index = i;
-                        }
                         break;
                     case "right":
                         e.solidArea.y += e.speed;
-                        if(e.solidArea.intersects(target[i].solidArea))
-                        {
-                            e.collisionOn = true;
-                            index = i;
-                        }
                         break;
+                }
+
+                if(e.solidArea.intersects(target[i].solidArea))
+                {
+                    if(target[i] != e) 
+                    {
+                        e.collisionOn = true;
+                        index = i;
+                    } 
                 }
 
                 e.solidArea.x = e.solidAreaDefaultX;
@@ -127,8 +116,10 @@ public class CollisionChecker
         return index;
     }
 
-    public void checkPlayer(Entity e)
+    public boolean checkPlayer(Entity e)
     {
+        boolean contactPlayer = false;
+
         e.solidArea.x = e.worldX + e.solidArea.x;
         e.solidArea.y = e.worldY + e.solidArea.y;
 
@@ -139,37 +130,31 @@ public class CollisionChecker
         {
             case "up":
                 e.solidArea.y -= e.speed;
-                if(e.solidArea.intersects(gp.player.solidArea))
-                {
-                    e.collisionOn = true;
-                }
                 break;
             case "down":
                 e.solidArea.y += e.speed;
-                if(e.solidArea.intersects(gp.player.solidArea))
-                {
-                    e.collisionOn = true;
-                }
                 break;
             case "left":
                 e.solidArea.x -= e.speed;
-                if(e.solidArea.intersects(gp.player.solidArea))
-                {
-                    e.collisionOn = true;
-                }
                 break;
             case "right":
                 e.solidArea.y += e.speed;
-                if(e.solidArea.intersects(gp.player.solidArea))
-                {
-                    e.collisionOn = true;
-                }
                 break;
+        }
+
+        if(e.solidArea.intersects(gp.player.solidArea))
+        {
+            e.collisionOn = true;
+            contactPlayer = true;
         }
 
         e.solidArea.x = e.solidAreaDefaultX;
         e.solidArea.y = e.solidAreaDefaultY;
         gp.player.solidArea.x = gp.player.solidAreaDefaultX;
         gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+
+        return contactPlayer;
     }
+
+
 }
