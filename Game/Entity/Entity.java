@@ -26,6 +26,10 @@ public class Entity {
     public Rectangle solidArea = new Rectangle(0,0,48,48);
     public boolean collisionOn = false;
 
+    // Character state
+    public int maxLife;
+    public int life;
+
     public Entity(MethGamePanel gp)
     {
         this.gp = gp;

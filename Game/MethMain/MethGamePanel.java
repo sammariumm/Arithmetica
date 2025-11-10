@@ -34,7 +34,12 @@ public class MethGamePanel extends JPanel implements Runnable{
 
     public TileManager tileM = new TileManager(this);
     MethHandler methH = new MethHandler();
+
+    // Sounds
+    Sound sound = new Sound();
+
     AssetSetter aSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
     Thread gameThread;
 
     // Entities and Objects
@@ -56,6 +61,7 @@ public class MethGamePanel extends JPanel implements Runnable{
 
     public void setupGame()
     {
+        playMusic(0);
         aSetter.setNPC();
     }
     
@@ -162,6 +168,8 @@ public class MethGamePanel extends JPanel implements Runnable{
 
         tileM.draw(g2);
 
+        ui.draw(g2);
+
         // npc
         for(int i = 0; i < npc.length; i++)
         {
@@ -177,6 +185,24 @@ public class MethGamePanel extends JPanel implements Runnable{
         g2.dispose();
 
 
+    }
+
+    public void playMusic(int i)
+    {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic()
+    {
+        sound.stop();
+    }
+
+    public void playSFX(int i)
+    {
+        sound.setFile(i);
+        sound.play();
     }
 
 }
