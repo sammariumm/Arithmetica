@@ -1,6 +1,5 @@
 package Game.MethMain;
 
-import Game.MethMain.MethGamePanel;
 import Game.Entity.Entity;
 
 public class CollisionChecker 

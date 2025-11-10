@@ -19,10 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import javax.swing.*;
 public class MethMain {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new BackgroundSlideshow().start());
@@ -32,15 +28,15 @@ class BackgroundSlideshow {
     private final int WINDOW_WIDTH = 960;
     private final int WINDOW_HEIGHT = 576;
     private final String[] imagePaths = {
-        "C:/Coders/ARITHMETICA/Game/Res/background_image_1.gif",
-        "C:/Coders/ARITHMETICA/Game/Res/background_image_2.gif",
-        "C:/Coders/NCP3105/ARITHMETICA/Game/Res/background_image_3.gif",
+        "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/background_image_1.gif",
+        "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/background_image_2.gif",
+        "C:/SCHOOL-RELATED/NCP3105/NCP3105/ARITHMETICA/Game/Res/background_image_3.gif",
     };
-    private final String logoPath = "C:/Coders/ARITHMETICA/Game/Res/logo.png";
+    private final String logoPath = "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/logo.png";
     private final String[] buttonImagePaths = {
-        "C:/Coders/ARITHMETICA/Game/Res/play_button.png",
-        "C:/Coders/ARITHMETICA/Game/Res/credits_button.png",
-        "C:/Coders/ARITHMETICA/Game/Res/quit_button.png"
+        "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/play_button.png",
+        "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/credits_button.png",
+        "C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/quit_button.png"
     };
     private JFrame window;
     private FadePanel fadePanel;
@@ -231,14 +227,14 @@ class CreditsWindow extends JFrame {
         private float fadeToBlack = 0f;
         private boolean finished = false;
         CreditsPanel() {
-            backgroundGif = new ImageIcon("C:/Coders/ARITHMETICA/Game/Res/background_image_4.gif");
-            logoIcon = new ImageIcon("C:/Coders/ARITHMETICA/Game/Res/logo.png");
+            backgroundGif = new ImageIcon("C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/background_image_4.gif");
+            logoIcon = new ImageIcon("C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/logo.png");
             setDoubleBuffered(true);
             setBackground(Color.BLACK);
             setForeground(Color.WHITE);
             try {
                 retroFont = Font.createFont(Font.TRUETYPE_FONT,
-                        new java.io.File("C:/Coders/ARITHMETICA/Game/Res/PressStart2P.ttf"))
+                        new java.io.File("C:/SCHOOL-RELATED/NCP3105/ARITHMETICA/Game/Res/PressStart2P.ttf"))
                         .deriveFont(Font.PLAIN, 16);
                 GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(retroFont);
             } catch (Exception e) {

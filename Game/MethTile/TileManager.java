@@ -3,7 +3,6 @@ package Game.MethTile;
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -25,7 +24,7 @@ public class TileManager {
         mapTileNum = new int [gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap("/Game/Res/Maps/map02.txt");
+        loadMap();
 
     }
     
@@ -40,7 +39,7 @@ public class TileManager {
             File t5 = new File("Game/Res/Tiles/tree_16.png");     
             File t6 = new File("Game/Res/Tiles/grass_edge_16.png");     
             File t7 = new File("Game/Res/Tiles/cliff_side_16.png");     
-            File t8 = new File("Game/Res/Tiles/cliff_side_16.png");     
+            File t8 = new File("Game/Res/Tiles/autumn_leave_16.png");     
             
             tile[0] = new Tile(); // malupet na grass
             tile[0].image = ImageIO.read(t1);
@@ -58,18 +57,18 @@ public class TileManager {
             tile[3].collision = true;
 
             tile[4] = new Tile(); //puno
-            tile[4].image = ImageIO.read(t1);
+            tile[4].image = ImageIO.read(t5);
             tile[4].collision = true;
             
             tile[5] = new Tile(); //dulo ng grass
-            tile[5].image = ImageIO.read(t2);
+            tile[5].image = ImageIO.read(t6);
 
             tile[6] = new Tile(); //cliff_side
-            tile[6].image = ImageIO.read(t2);
+            tile[6].image = ImageIO.read(t7);
             tile[6].collision = true;
 
             tile[7] = new Tile(); //madahon dahon na grass
-            tile[7].image = ImageIO.read(t2);
+            tile[7].image = ImageIO.read(t8);
 
 
         } catch (Exception e) {
@@ -78,11 +77,12 @@ public class TileManager {
 
     }
 
-    public void loadMap(String filePath) {
+    public void loadMap() {
 
         try {
 
-            InputStream is = new FileInputStream(filePath);
+            // WAG PALITAN PLSSDKFJDSLAFAKLWEFHJK
+            InputStream is = getClass().getResourceAsStream("/Game/Res/Maps/map02.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -113,6 +113,8 @@ public class TileManager {
         }
 
     }
+
+
     public void draw(Graphics2D g2) {
 
        int worldCol = 0;
