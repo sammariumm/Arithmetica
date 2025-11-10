@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class MethHandler implements KeyListener{
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -32,6 +32,12 @@ public class MethHandler implements KeyListener{
 
         if(code == KeyEvent. VK_D) {
             rightPressed = true;
+        }
+
+        if(code == KeyEvent. VK_ENTER)
+        {
+            enterPressed = true;
+            System.out.println("luh may burat");
         }
 
     }
