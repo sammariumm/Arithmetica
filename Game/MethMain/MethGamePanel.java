@@ -332,12 +332,12 @@ public class MethGamePanel extends JPanel implements Runnable
 
         if (isCorrect) 
         {
-            newMonster.displayText = "A: " + correctAnswer;
+            newMonster.displayText = "" + correctAnswer;
             newMonster.holdsCorrectAnswer = true;
         } 
         else 
         {
-            newMonster.displayText = "A: " + (int)(Math.random() * 99 + 1);
+            newMonster.displayText = "" + (int)(Math.random() * 99 + 1);
             newMonster.holdsCorrectAnswer = false;
         }
 

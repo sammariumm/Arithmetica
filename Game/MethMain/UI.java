@@ -20,8 +20,8 @@ public class UI
     Font font;
     BufferedImage heart_full, heart_half, heart_empty;
     
-    public String[] mathPrompt = new String[100];
-    public String[] mathPromptAnswer = new String[100];
+    public String[] mathPrompt = new String[50];
+    public String[] mathPromptAnswer = new String[50];
     public String currentPrompt = "";   // stores the last shown math prompt
     public boolean correctEnemySlain = false; // persist between frames
     public int currentPromptIndex = 0;
