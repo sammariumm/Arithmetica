@@ -41,17 +41,17 @@ public class MON_YellowSlime extends Entity
 
     public void getImage()
     {
-        //up1 = setup("/Game/Res/monster/yellowslime_1");
-        //up2 = setup("/Game/Res/monster/yellowslime_2");
+        //  up1 = setup("/Game/Res/monster/yellowslime_1");
+        //  up2 = setup("/Game/Res/monster/yellowslime_2");
 
-        //down1 = setup("/Game/Res/monster/yellowslime_1");
-        //down2 = setup("/Game/Res/monster/yellowslime_2");
+        //  down1 = setup("/Game/Res/monster/yellowslime_1");
+        //  down2 = setup("/Game/Res/monster/yellowslime_2");
 
-        //left1 = setup("/Game/Res/monster/yellowslime_1");
-        //left2 = setup("/Game/Res/monster/yellowslime_2");
+        //  left1 = setup("/Game/Res/monster/yellowslime_1");
+        //  left2 = setup("/Game/Res/monster/yellowslime_2");
 
-        //right1 = setup("/Game/Res/monster/yellowslime_1");
-        //right2 = setup("/Game/Res/monster/yellowslime_2");
+        //  right1 = setup("/Game/Res/monster/yellowslime_1");
+        //  right2 = setup("/Game/Res/monster/yellowslime_2");
 
         up1 = setup("/Game/Res/npc/easter_egg_up_1",gp.tileSize,gp.tileSize);
         up2 = setup("/Game/Res/npc/easter_egg_up_2",gp.tileSize,gp.tileSize);
@@ -79,14 +79,17 @@ public class MON_YellowSlime extends Entity
             {
                 direction = "up";
             }
+
             if(i > 25 && i <= 50)
             {
                 direction = "down";
             }
+
             if(i > 50 && i <= 75)
             {
                 direction = "left";
             }
+
             if(i > 75 && i <= 100)
             {
                 direction = "right";

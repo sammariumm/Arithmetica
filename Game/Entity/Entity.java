@@ -31,7 +31,6 @@ public class Entity {
 
     public int solidAreaDefaultX, solidAreaDefaultY;
 
-    
     public boolean collisionOn = false;
     public boolean invincible = false;
     public boolean attacking = false;
@@ -47,7 +46,6 @@ public class Entity {
     public boolean holdsCorrectAnswer = false;
     public String displayText = "";
     public boolean showText = false;
-
 
     public Entity(MethGamePanel gp)
     {
@@ -99,15 +97,19 @@ public class Entity {
 
             spriteCounter++;
 
-            if(spriteCounter > 14) {
+            if(spriteCounter > 14) 
+            {
 
-                if(spriteNum == 1) {
+                if(spriteNum == 1) 
+                {
                     spriteNum = 2;
                 }
 
-                else if(spriteNum == 2) {
+                else if(spriteNum == 2) 
+                {
                     spriteNum = 1;
                 }
+
                 spriteCounter = 0;
             }
 
@@ -161,13 +163,14 @@ public class Entity {
                     default:
                         break;
                 }
+                
                 if(invincible == true)
-                    {
-                        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
-                    }
+                {
+                    g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+                }
                 
                 g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize,null); 
-                //System.out.println("Drawing NPC at " + worldX + "," + worldY + " direction=" + direction);
+                //System.out.println("NPC at " + worldX + "," + worldY + " direction=" + direction);
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
             }
 

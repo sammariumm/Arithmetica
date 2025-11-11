@@ -17,19 +17,17 @@ public class NPC_EasterEgg extends Entity
         getNPCImage();
     }
 
-    public void getNPCImage() {
-
-
-
-            //File f1 = new File("Game/Res/player/manyakis_up_1.png");
-            //File f2 = new File("Game/Res/player/manyakis_up_2.png");
-            //File f3 = new File("Game/Res/player/manyakis_down_1.png");
-            //File f4 = new File("Game/Res/player/manyakis_down_2.png");
-           //File f5 = new File("Game/Res/player/manyakis_left_1.png");
-            //File f6 = new File("Game/Res/player/manyakis_left_2.png");
-           // File f7 = new File("Game/Res/player/manyakis_right_1.png");
-           //File f8 = new File("Game/Res/player/manyakis_right_2.png");
-
+    public void getNPCImage() 
+    {
+            //  File f1 = new File("Game/Res/player/manyakis_up_1.png");
+            //  File f2 = new File("Game/Res/player/manyakis_up_2.png");
+            //  File f3 = new File("Game/Res/player/manyakis_down_1.png");
+            //  File f4 = new File("Game/Res/player/manyakis_down_2.png");
+            //  File f5 = new File("Game/Res/player/manyakis_left_1.png");
+            //  File f6 = new File("Game/Res/player/manyakis_left_2.png");
+            //  File f7 = new File("Game/Res/player/manyakis_right_1.png");
+            //  File f8 = new File("Game/Res/player/manyakis_right_2.png");
+           
             up1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
             up2 = setup("/Game/Res/npc/yellowslime_2",gp.tileSize,gp.tileSize);
             down1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
@@ -54,14 +52,17 @@ public class NPC_EasterEgg extends Entity
             {
                 direction = "up";
             }
+
             if(i > 25 && i <= 50)
             {
                 direction = "down";
             }
+
             if(i > 50 && i <= 75)
             {
                 direction = "left";
             }
+
             if(i > 75 && i <= 100)
             {
                 direction = "right";
