@@ -282,8 +282,8 @@ public class MethGamePanel extends JPanel implements Runnable {
 
     public void spawnMonster(int index) {
         MON_YellowSlime newMonster = new MON_YellowSlime(this);
-        int maxX = tileSize * maxScreenCol - tileSize;
-        int maxY = tileSize * maxScreenrow - tileSize;
+        int maxX = worldWidth;
+        int maxY = worldHeight;
         CollisionChecker cc = new CollisionChecker(this);
         boolean validSpawn = false;
             while (!validSpawn) {
