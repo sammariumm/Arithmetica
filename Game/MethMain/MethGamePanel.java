@@ -57,7 +57,8 @@ public class MethGamePanel extends JPanel implements Runnable
 
     public Player player = new Player(this, methH);
 
-    int timeLeft = 60;
+
+    int timeLeft = 100;
     public int score = 0;
     long lastTimerCheck = System.currentTimeMillis();
     boolean gameOver = false;
@@ -284,7 +285,7 @@ public class MethGamePanel extends JPanel implements Runnable
     public void restartGame() 
     {
         gameOver = false;
-        timeLeft = 60;
+        timeLeft = 100;
         score = 0;
         player.life = player.maxLife;
         player.setDefaultValues();
