@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import Game.MethMain.MethGamePanel;
 import Game.MethMain.MethHandler;
@@ -249,21 +250,34 @@ public class Player extends Entity{
     public void damageMonster(int i) 
     {
 
-        if(i != 999) 
-        {
-
-            if(gp.monster[i].invincible == false) 
-            {
+        if (i != 999) {
+            if (gp.monster[i].invincible == false) {
+                boolean correct = gp.monster[i].holdsCorrectAnswer;
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
-                if(gp.monster[i].life <= 0)
-                {
+
+                if (gp.monster[i].life <= 0) {
                     gp.monster[i] = null;
-                    gp.score += 67;
-                    gp.spawnMonster(i);
+                    gp.spawnMonster(i); // Respawn *first* before reassigning correct monster
+
+                    if (correct) {
+                        gp.score += 67;
+                        gp.ui.correctEnemySlain = true;
+                        System.out.println("nadale mo");
+
+                        // choose new correct monster (after respawning)
+                        Random random = new Random();
+                        int randomIndex = random.nextInt(4);
+
+                        for (int j = 0; j < gp.monster.length; j++) {
+                            if (gp.monster[j] != null)
+                                gp.monster[j].holdsCorrectAnswer = (j == randomIndex);
+                        }
+                    }
                 }
-            }
         }
+    }
+
     }
 
 

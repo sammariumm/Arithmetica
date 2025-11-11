@@ -2,6 +2,8 @@ package Game.monster;
 
 import java.io.IOException;
 import java.util.Random;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
 import Game.Entity.Entity;
 import Game.MethMain.MethGamePanel;
@@ -9,6 +11,7 @@ import Game.MethMain.MethGamePanel;
 public class MON_YellowSlime extends Entity
 {
     MethGamePanel gp;
+
     public MON_YellowSlime(MethGamePanel gp)
     {
         super(gp);
@@ -20,6 +23,7 @@ public class MON_YellowSlime extends Entity
         direction = "down";
         maxLife = 4;
         life = maxLife;
+        boolean holdsCorrectAnswer;
 
         solidArea.x = 3;
         solidArea.y = 18;
@@ -30,6 +34,8 @@ public class MON_YellowSlime extends Entity
 
         getImage();
     }
+
+
 
     public void getImage()
     {

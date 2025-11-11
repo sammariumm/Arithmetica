@@ -42,6 +42,7 @@ public class Entity {
     public int life;
     public int actionLockCounter = 0;
     public int type; // 0 = player, 1 = npc, 2 = monster
+    public boolean holdsCorrectAnswer = false;
 
 
     public Entity(MethGamePanel gp)
