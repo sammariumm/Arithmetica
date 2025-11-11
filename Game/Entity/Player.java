@@ -279,9 +279,9 @@ public class Player extends Entity{
                                 // get correct answer from UI
                                 int correctIndex = gp.ui.currentPromptIndex;
                                 String correctAnswer = gp.ui.mathPromptAnswer[correctIndex];
-                                gp.monster[j].displayText = "A: " + correctAnswer;
+                                gp.monster[j].displayText = "" + correctAnswer;
                             } else {
-                                gp.monster[j].displayText = "A: " + (int)(Math.random() * 99 + 1);
+                                gp.monster[j].displayText = "" + (int)(Math.random() * 99 + 1);
                             }
                         }
                     }
