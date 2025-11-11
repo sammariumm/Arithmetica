@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.awt.Color;
+import java.awt.Font;
 
 import javax.imageio.ImageIO;
 
@@ -43,6 +45,8 @@ public class Entity {
     public int actionLockCounter = 0;
     public int type; // 0 = player, 1 = npc, 2 = monster
     public boolean holdsCorrectAnswer = false;
+    public String displayText = "";
+    public boolean showText = false;
 
 
     public Entity(MethGamePanel gp)
@@ -165,6 +169,25 @@ public class Entity {
                 g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize,null); 
                 //System.out.println("Drawing NPC at " + worldX + "," + worldY + " direction=" + direction);
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            }
+
+        // draw text above the monster
+            if (showText && displayText != null && !displayText.isEmpty()) {
+                g2.setFont(new Font("Monospaced", Font.BOLD, 16));
+                g2.setColor(Color.WHITE);
+                
+                // Measure text width to center it above the sprite
+                int textWidth = g2.getFontMetrics().stringWidth(displayText);
+                int textX = screenX + (gp.tileSize / 2) - (textWidth / 2);
+                int textY = screenY - 10; // slightly above monster sprite
+                
+                // Draw a subtle background behind text (optional)
+                g2.setColor(new Color(0, 0, 0, 150));
+                g2.fillRoundRect(textX - 4, textY - 16, textWidth + 8, 18, 6, 6);
+                
+                // Draw text itself
+                g2.setColor(Color.WHITE);
+                g2.drawString(displayText, textX, textY);
             }
     }
 

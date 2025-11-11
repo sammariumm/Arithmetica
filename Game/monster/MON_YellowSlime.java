@@ -24,6 +24,8 @@ public class MON_YellowSlime extends Entity
         maxLife = 4;
         life = maxLife;
         boolean holdsCorrectAnswer;
+        displayText = "";
+        showText = false;
 
         solidArea.x = 3;
         solidArea.y = 18;

@@ -247,38 +247,50 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i) 
-    {
+    public void damageMonster(int i) {
+    if (i != 999) {
+        if (gp.monster[i].invincible == false) {
+            boolean correct = gp.monster[i].holdsCorrectAnswer;
+            gp.monster[i].life -= 1;
+            gp.monster[i].invincible = true;
 
-        if (i != 999) {
-            if (gp.monster[i].invincible == false) {
-                boolean correct = gp.monster[i].holdsCorrectAnswer;
-                gp.monster[i].life -= 1;
-                gp.monster[i].invincible = true;
+            if (gp.monster[i].life <= 0) {
+                gp.monster[i] = null;
 
-                if (gp.monster[i].life <= 0) {
-                    gp.monster[i] = null;
-                    gp.spawnMonster(i); // Respawn *first* before reassigning correct monster
+                // Respawn the defeated monster (not necessarily correct)
+                gp.spawnMonster(i, false);
 
-                    if (correct) {
-                        gp.score += 67;
-                        gp.ui.correctEnemySlain = true;
-                        System.out.println("Defeated");
+                if (correct) {
+                    gp.score += 67;
+                    gp.ui.correctEnemySlain = true;
+                    System.out.println("Defeated");
 
-                        // choose new correct monster (after respawning)
-                        Random random = new Random();
-                        int randomIndex = random.nextInt(4);
+                    // ✅ Choose a *new* correct monster
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(gp.monster.length);
 
-                        for (int j = 0; j < gp.monster.length; j++) {
-                            if (gp.monster[j] != null)
-                                gp.monster[j].holdsCorrectAnswer = (j == randomIndex);
+                    for (int j = 0; j < gp.monster.length; j++) {
+                        if (gp.monster[j] != null) {
+                            // Spawn correct one again
+                            gp.monster[j].holdsCorrectAnswer = (j == randomIndex);
+
+                            // Optional: update its display text
+                            if (j == randomIndex) {
+                                // get correct answer from UI
+                                int correctIndex = gp.ui.currentPromptIndex;
+                                String correctAnswer = gp.ui.mathPromptAnswer[correctIndex];
+                                gp.monster[j].displayText = "A: " + correctAnswer;
+                            } else {
+                                gp.monster[j].displayText = "A: " + (int)(Math.random() * 99 + 1);
+                            }
                         }
                     }
                 }
+            }
         }
     }
+}
 
-    }
 
 
     public void draw(Graphics2D g2) {

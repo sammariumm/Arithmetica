@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -281,10 +282,11 @@ public class MethGamePanel extends JPanel implements Runnable {
         playMusic(0);
     }
 
-   public void spawnMonster(int index) {
+   public void spawnMonster(int index, boolean isCorrect) {
     MON_YellowSlime newMonster = new MON_YellowSlime(this);
     CollisionChecker cc = new CollisionChecker(this);
     boolean validSpawn = false;
+
     while (!validSpawn) {
         int col = (int)(Math.random() * maxWorldCol);
         int row = (int)(Math.random() * maxWorldRow);
@@ -296,6 +298,28 @@ public class MethGamePanel extends JPanel implements Runnable {
             validSpawn = true;
         }
     }
+
     monster[index] = newMonster;
+
+    // ✅ get the correct answer based on the current prompt
+    String correctAnswer = "";
+    for (int i = 0; i < ui.mathPrompt.length; i++) {
+        if (ui.mathPrompt[i] != null && ui.mathPrompt[i].equals(ui.currentPrompt)) {
+            correctAnswer = ui.mathPromptAnswer[i];
+            break;
+        }
+    }
+
+    // ✅ assign text based on whether this monster is the correct one
+    if (isCorrect) {
+        newMonster.displayText = "A: " + correctAnswer;
+        newMonster.holdsCorrectAnswer = true;
+    } else {
+        newMonster.displayText = "A: " + (int)(Math.random() * 99 + 1);
+        newMonster.holdsCorrectAnswer = false;
+    }
+
+    newMonster.showText = true;
 }
+
 }

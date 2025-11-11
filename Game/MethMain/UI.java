@@ -18,9 +18,12 @@ public class UI
     Graphics2D g2;
     Font font;
     BufferedImage heart_full, heart_half, heart_empty;
-    String[] mathPrompt = new String[100];
-    String currentPrompt = "";   // stores the last shown math prompt
+    public String[] mathPrompt = new String[100];
+    public String[] mathPromptAnswer = new String[100];
+    public String currentPrompt = "";   // stores the last shown math prompt
     public boolean correctEnemySlain = false; // persist between frames
+    public int currentPromptIndex = 0;
+
     
     public UI(MethGamePanel gp)
     {
@@ -45,6 +48,18 @@ public class UI
         mathPrompt[7] = "9 + 6";
         mathPrompt[8] = "4 - 2";
         mathPrompt[9] = "4 x 5";
+
+        // answers
+        mathPromptAnswer[0] = "10";
+        mathPromptAnswer[1] = "6";
+        mathPromptAnswer[2] = "14";
+        mathPromptAnswer[3] = "30";
+        mathPromptAnswer[4] = "4";
+        mathPromptAnswer[5] = "2";
+        mathPromptAnswer[6] = "72";
+        mathPromptAnswer[7] = "15";
+        mathPromptAnswer[8] = "2";
+        mathPromptAnswer[9] = "20";
 
         // start with one prompt
         currentPrompt = mathPrompt[2];
@@ -129,11 +144,14 @@ public class UI
         if (correctEnemySlain)
         {
             Random random = new Random();
-            int index = random.nextInt(10); // 0–9
+            currentPromptIndex = random.nextInt(10);
+            currentPrompt = mathPrompt[currentPromptIndex];
+            correctEnemySlain = false;
 
-            currentPrompt = mathPrompt[index];
-            correctEnemySlain = false; // reset flag after updating
+            // ⬇️ Now that prompt has changed, reassign monsters
+            gp.aSetter.setMonster();
         }
+
 
         return currentPrompt; // always return the last shown prompt
     }
