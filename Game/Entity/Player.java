@@ -33,13 +33,14 @@ public class Player extends Entity{
 
         setDefaultValues();
         getPlayerImage();
+        getPlayerAttackImage();
 
     }
 
     public void setDefaultValues() {
 
         worldX = 640;
-        worldY = 940;
+        worldY = 900;
         speed = 4;
         direction = "down";
 
@@ -60,19 +61,41 @@ public class Player extends Entity{
            // File f7 = new File("Game/Res/player/manyakis_right_1.png");
            //File f8 = new File("Game/Res/player/manyakis_right_2.png");
 
-            up1 = setup("/Game/Res/player/manyakis_up_1");
-            up2 = setup("/Game/Res/player/manyakis_up_2");
-            down1 = setup("/Game/Res/player/manyakis_down_1");
-            down2 = setup("/Game/Res/player/manyakis_down_2");
-            left1 = setup("/Game/Res/player/manyakis_left_1");
-            left2 = setup("/Game/Res/player/manyakis_left_2");
-            right1 = setup("/Game/Res/player/manyakis_right_1");
-            right2 = setup("/Game/Res/player/manyakis_right_2");
+            up1 = setup("/Game/Res/player/manyakis_up_1",gp.tileSize,gp.tileSize);
+            up2 = setup("/Game/Res/player/manyakis_up_2",gp.tileSize,gp.tileSize);
+            down1 = setup("/Game/Res/player/manyakis_down_1",gp.tileSize,gp.tileSize);
+            down2 = setup("/Game/Res/player/manyakis_down_2",gp.tileSize,gp.tileSize);
+            left1 = setup("/Game/Res/player/manyakis_left_1",gp.tileSize,gp.tileSize);
+            left2 = setup("/Game/Res/player/manyakis_left_2",gp.tileSize,gp.tileSize);
+            right1 = setup("/Game/Res/player/manyakis_right_1",gp.tileSize,gp.tileSize);
+            right2 = setup("/Game/Res/player/manyakis_right_2",gp.tileSize,gp.tileSize);
+    }
+
+    public void getPlayerAttackImage() {
+
+            attackUp1 = setup("/Game/Res/player/manyakis_attack_up_1",gp.tileSize,gp.tileSize*2);
+            attackUp2 = setup("/Game/Res/player/manyakis_attack_up_2",gp.tileSize,gp.tileSize*2);
+            attackDown1 = setup("/Game/Res/player/manyakis_attack_down_1",gp.tileSize,gp.tileSize*2);
+            attackDown2 = setup("/Game/Res/player/manyakis_attack_down_2",gp.tileSize,gp.tileSize*2);
+            attackLeft1 = setup("/Game/Res/player/manyakis_attack_left_1",gp.tileSize*2,gp.tileSize);
+            attackLeft2 = setup("/Game/Res/player/manyakis_attack_left_2",gp.tileSize*2,gp.tileSize);
+            attackRight1 = setup("/Game/Res/player/manyakis_attack_right_1",gp.tileSize*2,gp.tileSize);
+            attackRight2 = setup("/Game/Res/player/manyakis_attack_right_2",gp.tileSize*2,gp.tileSize);
     }
 
     
 
     public void update() {
+
+        if (attacking == true) {
+            attacking();
+    }
+        else if (methH.enterPressed == true) {
+            attacking = true;
+            spriteCounter = 0;
+            // Optionally reset methH.enterPressed so it doesn’t repeat next frame
+            methH.enterPressed = false;
+    }
 
         if (methH.upPressed == true || methH.downPressed == true || methH.leftPressed == true || methH.rightPressed == true ) {
 
@@ -148,12 +171,34 @@ public class Player extends Entity{
         }
     }
 
+    public void attacking() { 
+
+        spriteCounter++;
+
+        if(spriteCounter <=5) {
+            spriteNum = 1;
+        }
+
+        if (spriteCounter > 5 && spriteCounter <= 25) {
+            spriteNum = 2;
+        }
+
+        if (spriteCounter > 25) {
+            spriteNum = 1;
+            spriteCounter = 0;
+            attacking = false;
+        }
+    }
+
     public void interactNPC(int i)
     {
-        if(i != 999)
-        {
+        //if (gp.methH.enterPressed == true) {
             
-        }
+        //}
+            //if(i != 999)
+            // {
+            //     
+            // }
     }
 
     public void contactMonster(int i)
@@ -165,7 +210,6 @@ public class Player extends Entity{
                 life -= 1;
                 invincible = true;
             }
-            life -= 1;
             System.out.println("BURAT");
         }
     }
@@ -179,49 +223,49 @@ public class Player extends Entity{
 
         switch (direction) {
             case "up":
-                if(spriteNum == 1) {
-                    image = up1;
+                if(attacking == false) {
+                    if(spriteNum == 1) {image = up1;}
+                    if(spriteNum == 2) {image = up2;}
                 }
-
-                if(spriteNum == 2) {
-                    image = up2;
+                if(attacking == true) {
+                    if(spriteNum == 1) {image = attackUp1;}
+                    if(spriteNum == 2) {image = attackUp2;}
                 }
                 break;
 
             case "down":
-
-                 if(spriteNum == 1) {
-                    image = down1;
+                if(attacking == false) {
+                    if(spriteNum == 1) {image = down1;}
+                    if(spriteNum == 2) {image = down2;}
                 }
-
-                if(spriteNum == 2) {
-                    image = down2;
+                if(attacking == true) {
+                    if(spriteNum == 1) {image = attackDown1;}
+                    if(spriteNum == 2) {image = attackDown2;}
                 }
                 break;
 
             case "left":
-
-                 if(spriteNum == 1) {
-                    image = left1;
+                if(attacking == false) {
+                    if(spriteNum == 1) {image = left1;}
+                    if(spriteNum == 2) {image = left2;}
                 }
-
-                if(spriteNum == 2) {
-                    image = left2;
+                if(attacking == true) {
+                    if(spriteNum == 1) {image = attackLeft1;}
+                    if(spriteNum == 2) {image = attackLeft2;}
                 }
                 break;
 
             case "right":
-
-                 if(spriteNum == 1) {
-                    image = right1;
+                if(attacking == false) {
+                    if(spriteNum == 1) {image = right1;}
+                    if(spriteNum == 2) {image = right2;}
                 }
-
-                if(spriteNum == 2) {
-                    image = right2;
+                if(attacking == true) {
+                    if(spriteNum == 1) {image = attackRight1;}
+                    if(spriteNum == 2) {image = attackRight2;}
                 }
                 break;
-        
-            default:
+                default:
                 break;
         }
 

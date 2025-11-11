@@ -8,9 +8,11 @@ import Game.MethMain.MethGamePanel;
 
 public class MON_YellowSlime extends Entity
 {
+    MethGamePanel gp;
     public MON_YellowSlime(MethGamePanel gp)
     {
         super(gp);
+        this.gp = gp;
 
         type = 2;
         name = "Yellow Slime";
@@ -43,17 +45,17 @@ public class MON_YellowSlime extends Entity
         //right1 = setup("/Game/Res/monster/yellowslime_1");
         //right2 = setup("/Game/Res/monster/yellowslime_2");
 
-        up1 = setup("/Game/Res/npc/easter_egg_up_1");
-        up2 = setup("/Game/Res/npc/easter_egg_up_2");
+        up1 = setup("/Game/Res/npc/easter_egg_up_1",gp.tileSize,gp.tileSize);
+        up2 = setup("/Game/Res/npc/easter_egg_up_2",gp.tileSize,gp.tileSize);
 
-        down1 = setup("/Game/Res/npc/easter_egg_down_1");
-        down2 = setup("/Game/Res/npc/easter_egg_down_2");
+        down1 = setup("/Game/Res/npc/easter_egg_down_1",gp.tileSize,gp.tileSize);
+        down2 = setup("/Game/Res/npc/easter_egg_down_2",gp.tileSize,gp.tileSize);
 
-        left1 = setup("/Game/Res/npc/easter_egg_left_1");
-        left2 = setup("/Game/Res/npc/easter_egg_left_2");
+        left1 = setup("/Game/Res/npc/easter_egg_left_1",gp.tileSize,gp.tileSize);
+        left2 = setup("/Game/Res/npc/easter_egg_left_2",gp.tileSize,gp.tileSize);
 
-        right1 = setup("/Game/Res/npc/easter_egg_right_1");
-        right2 = setup("/Game/Res/npc/easter_egg_right_2");
+        right1 = setup("/Game/Res/npc/easter_egg_right_1",gp.tileSize,gp.tileSize);
+        right2 = setup("/Game/Res/npc/easter_egg_right_2",gp.tileSize,gp.tileSize);
     }
 
     public void setAction()

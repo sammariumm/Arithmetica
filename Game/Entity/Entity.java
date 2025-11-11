@@ -14,23 +14,23 @@ public class Entity {
     
     MethGamePanel gp;
 
-    public int worldX, worldY; 
-
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
-    public String direction = "down";
-    
-
+    public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1, attackLeft2, attackRight1, attackRight2;
     public BufferedImage image, image2, image3;
-    public boolean collision = false;
+    public Rectangle solidArea = new Rectangle(0,0,48,48);
 
+    public int worldX, worldY; 
+    public boolean collision = false;
+    public String direction = "down";
     public int spriteCounter = 0;
     public int spriteNum = 1;
 
     public int solidAreaDefaultX, solidAreaDefaultY;
 
-    public Rectangle solidArea = new Rectangle(0,0,48,48);
+    
     public boolean collisionOn = false;
     public boolean invincible = false;
+    public boolean attacking = false;
     public int invincibleCounter = 0;
 
     // Character state / attribute
@@ -170,7 +170,7 @@ public class Entity {
             }
     }
 
-    public BufferedImage setup(String imageName)
+    public BufferedImage setup(String imageName, int width, int height)
     {   
         UtilityTool uTool = new UtilityTool();
         BufferedImage image = null;
@@ -181,7 +181,7 @@ public class Entity {
             System.out.println("Resource found: " + getClass().getResource(imageName + ".png"));
 
             image = ImageIO.read(getClass().getResourceAsStream(imageName + ".png"));
-            image = uTool.scaleImage(image, gp.tileSize, gp.tileSize);
+            image = uTool.scaleImage(image, width, height);
         }
         catch(IOException e)
         {   

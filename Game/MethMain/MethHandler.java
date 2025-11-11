@@ -63,6 +63,9 @@ public class MethHandler implements KeyListener{
             rightPressed = false;
         }
 
+        if(code == KeyEvent. VK_ENTER) {
+            rightPressed = false;
+        }
     }
     
 }

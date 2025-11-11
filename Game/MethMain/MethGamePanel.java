@@ -36,7 +36,7 @@ public class MethGamePanel extends JPanel implements Runnable{
     int FPS = 60;
 
     public TileManager tileM = new TileManager(this);
-    MethHandler methH = new MethHandler();
+    public MethHandler methH = new MethHandler();
 
     // Sounds
     Sound sound = new Sound();

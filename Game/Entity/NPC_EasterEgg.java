@@ -30,14 +30,14 @@ public class NPC_EasterEgg extends Entity
            // File f7 = new File("Game/Res/player/manyakis_right_1.png");
            //File f8 = new File("Game/Res/player/manyakis_right_2.png");
 
-            up1 = setup("/Game/Res/npc/yellowslime_1");
-            up2 = setup("/Game/Res/npc/yellowslime_2");
-            down1 = setup("/Game/Res/npc/yellowslime_1");
-            down2 = setup("/Game/Res/npc/yellowslime_2");
-            left1 = setup("/Game/Res/npc/yellowslime_1");
-            left2 = setup("/Game/Res/npc/yellowslime_2");
-            right1 = setup("/Game/Res/npc/yellowslime_1");
-            right2 = setup("/Game/Res/npc/yellowslime_2");
+            up1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
+            up2 = setup("/Game/Res/npc/yellowslime_2",gp.tileSize,gp.tileSize);
+            down1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
+            down2 = setup("/Game/Res/npc/yellowslime_2",gp.tileSize,gp.tileSize);
+            left1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
+            left2 = setup("/Game/Res/npc/yellowslime_2",gp.tileSize,gp.tileSize);
+            right1 = setup("/Game/Res/npc/yellowslime_1",gp.tileSize,gp.tileSize);
+            right2 = setup("/Game/Res/npc/yellowslime_2",gp.tileSize,gp.tileSize);
 
     }
 
