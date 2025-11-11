@@ -31,6 +31,10 @@ public class Player extends Entity{
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
+        
+        attackArea.width = 36;
+        attackArea.height = 36;
+
         setDefaultValues();
         getPlayerImage();
         getPlayerAttackImage();
@@ -183,6 +187,34 @@ public class Player extends Entity{
             spriteNum = 2;
         }
 
+            // Save for Current World X and Y and Solid Area
+            int currentWorldX = worldX;
+            int currentWorldY = worldY;
+            int solidAreaWidth = solidArea.width;
+            int solidAreaHeigth = solidArea.height;
+
+            //Adjust player's worldX/Y for theattackArea
+            switch (direction) {
+                case "up": worldY -= attackArea.height; break;
+                case "down": worldY += attackArea.height; break;
+                case "left": worldX -= attackArea.width; break;
+                case "right": worldX += attackArea.width; break;
+            
+                default: break;
+            }
+
+            solidArea.width = attackArea.width;
+            solidArea.height = attackArea.height;
+
+            int monsterIndex = gp.collisionChecker.checkEntity(this, gp.monster);
+            damageMonster(monsterIndex);
+
+            worldX = currentWorldX;
+            worldY = currentWorldY;
+            solidArea.width = solidAreaWidth;
+            solidArea.height = solidAreaHeigth;
+
+    
         if (spriteCounter > 25) {
             spriteNum = 1;
             spriteCounter = 0;
@@ -211,6 +243,22 @@ public class Player extends Entity{
                 invincible = true;
             }
             System.out.println("BURAT");
+        }
+    }
+
+    public void damageMonster(int i) {
+
+        if(i != 999) {
+
+            if(gp.monster[i].invincible == false) {
+
+                gp.monster[i].life -= 1;
+                gp.monster[i].invincible = true;
+
+                if(gp.monster[i].life <= 0){
+                    gp.monster[i] = null;
+                }
+            }
         }
     }
 
@@ -282,7 +330,7 @@ public class Player extends Entity{
 
         if(invincible == true)
         {
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
 
         g2.drawImage(image, drawX, drawY, drawWidth, drawHeight, null);
