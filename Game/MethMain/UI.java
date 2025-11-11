@@ -19,6 +19,8 @@ public class UI
     Font font;
     BufferedImage heart_full, heart_half, heart_empty;
     String[] mathPrompt = new String[10];
+    String currentPrompt = "";   // stores the last shown math prompt
+    public boolean correctEnemySlain = false; // persist between frames
     
     public UI(MethGamePanel gp)
     {
@@ -31,6 +33,16 @@ public class UI
         heart_full = heart.image;
         heart_half = heart.image2;
         heart_empty = heart.image3;
+
+        // Initialize prompts
+        mathPrompt[0] = "1 + 1";
+        mathPrompt[1] = "2 + 2";
+        mathPrompt[2] = "given an integral";
+        mathPrompt[3] = "burat k ba";
+        mathPrompt[4] = "hihi";
+
+        // start with one prompt
+        currentPrompt = mathPrompt[2];
     }
 
     public void draw(Graphics2D g2)
@@ -108,37 +120,17 @@ public class UI
 
     public String setMathPrompt()
     {
-        String returnString = "";
-        Random random = new Random();
-        int index = random.nextInt(4);
-        boolean correctEnemySlain = false;
-
-        mathPrompt[0] = "1 + 1";
-        mathPrompt[1] = "2 + 2";
-        mathPrompt[2] = "given an integral";
-        mathPrompt[3] = "burat k ba";
-        mathPrompt[4] = "hihi";
-
-        switch(index)
+        // only change the prompt if the correct enemy was slain
+        if (correctEnemySlain)
         {
-            case 1:
-                returnString = mathPrompt[0];
-                break;
-            case 2:
-                returnString = mathPrompt[1];
-                break;
-            case 3:
-                returnString = mathPrompt[2];
-                break;
-            case 4:
-                returnString = mathPrompt[3];
-                break;
-            case 5:
-                returnString = mathPrompt[4];
-                break;
+            Random random = new Random();
+            int index = random.nextInt(5); // 0–4
+
+            currentPrompt = mathPrompt[index];
+            correctEnemySlain = false; // reset flag after updating
         }
 
-        return returnString;
+        return currentPrompt; // always return the last shown prompt
     }
 
 }
