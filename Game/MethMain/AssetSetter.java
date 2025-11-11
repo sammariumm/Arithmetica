@@ -45,9 +45,9 @@ public class AssetSetter
     public void setMonster() 
     {
         // Choose which monster will have the correct answer
-        int correctMonsterIndex = (int)(Math.random() * 4);
+        int correctMonsterIndex = (int)(Math.random() * 10);
 
-        for (int i = 0; i < 4; i++) 
+        for (int i = 0; i < 10; i++) 
         {
             boolean isCorrect = (i == correctMonsterIndex);
             gp.spawnMonster(i, isCorrect);
