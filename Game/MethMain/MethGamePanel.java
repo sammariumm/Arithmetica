@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import Game.Entity.Entity;
 import Game.Entity.Player;
 import Game.MethTile.TileManager;
+import Game.monster.MON_YellowSlime;
 
 public class MethGamePanel extends JPanel implements Runnable {
 
@@ -278,4 +279,13 @@ public class MethGamePanel extends JPanel implements Runnable {
         aSetter.setMonster();
         playMusic(0);
     }
+
+    public void spawnMonster(int index) {
+    MON_YellowSlime newMonster = new MON_YellowSlime(this);
+    int maxX = tileSize * maxScreenCol - tileSize;
+    int maxY = tileSize * maxScreenrow - tileSize;
+    newMonster.worldX = (int)(Math.random() * maxX);
+    newMonster.worldY = (int)(Math.random() * maxY);
+    monster[index] = newMonster;
+    }      
 }

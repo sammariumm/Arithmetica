@@ -260,6 +260,7 @@ public class Player extends Entity{
                 {
                     gp.monster[i] = null;
                     gp.score += 67;
+                    gp.spawnMonster(i);
                 }
             }
         }
