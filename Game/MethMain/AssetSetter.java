@@ -19,13 +19,13 @@ public class AssetSetter
 
     public void setNPC()
     {
-        gp.npc[0] = new NPC_EasterEgg(gp);
-        gp.npc[0].worldX = gp.tileSize * 2;
-        gp.npc[0].worldY = gp.tileSize * 3; 
+        //gp.npc[0] = new NPC_EasterEgg(gp);
+        //gp.npc[0].worldX = gp.tileSize * 2;
+        //gp.npc[0].worldY = gp.tileSize * 3; 
 
-        gp.npc[1] = new NPC_EasterEgg(gp);
-        gp.npc[1].worldX = gp.tileSize * 6;
-        gp.npc[1].worldY = gp.tileSize * 7; 
+        //gp.npc[1] = new NPC_EasterEgg(gp);
+        //gp.npc[1].worldX = gp.tileSize * 6;
+        //gp.npc[1].worldY = gp.tileSize * 7; 
     }
 
     public void setMonster()

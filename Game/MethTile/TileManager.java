@@ -55,6 +55,11 @@ public class TileManager {
             File t20 = new File("Game/Res/Tiles/grass_top_edge_16.png");
             File t21 = new File("Game/Res/Tiles/grass_top_left_edge_16.png");     
             File t22 = new File("Game/Res/Tiles/grass_top_right_edge_16.png"); 
+            File t23 = new File("Game/Res/Tiles/autumn_tree_16.png");     
+            File t24 = new File("Game/Res/Tiles/grass_covered_autumn_leaves_16.png");
+            File t25 = new File("Game/Res/Tiles/wood_plank_16.png");
+            File t26 = new File("Game/Res/Tiles/waterfall_top_16.png");     
+            File t27 = new File("Game/Res/Tiles/waterfall_bottom_16.png"); 
             
             tile[0] = new Tile(); // malupet na grass
             tile[0].image = ImageIO.read(t0);
@@ -135,6 +140,24 @@ public class TileManager {
 
             tile[22] = new Tile(); //top_right_edge_16
             tile[22].image = ImageIO.read(t22);
+
+            tile[23] = new Tile(); //autumn tree
+            tile[23].image = ImageIO.read(t23);
+            tile[23].collision = true;
+
+            tile[24] = new Tile(); //grass_covered autumn leave
+            tile[24].image = ImageIO.read(t24);
+            
+            tile[25] = new Tile(); //woodplank
+            tile[25].image = ImageIO.read(t25);
+
+            tile[26] = new Tile(); //waterfall top
+            tile[26].image = ImageIO.read(t26);
+            tile[26].collision = true;
+
+            tile[27] = new Tile(); //waterfall bottom
+            tile[27].image = ImageIO.read(t27);
+            tile[27].collision = true;
 
         } catch (Exception e) {
             e.printStackTrace();
