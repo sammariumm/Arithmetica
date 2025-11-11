@@ -220,6 +220,10 @@ public class Player extends Entity{
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
 
         BufferedImage image = null;
+        int drawX = screenX;
+        int drawY = screenY;
+        int drawWidth = gp.tileSize;
+        int drawHeight = gp.tileSize;
 
         switch (direction) {
             case "up":
@@ -230,6 +234,8 @@ public class Player extends Entity{
                 if(attacking == true) {
                     if(spriteNum == 1) {image = attackUp1;}
                     if(spriteNum == 2) {image = attackUp2;}
+                    drawHeight = gp.tileSize * 2;
+                    drawY = screenY - gp.tileSize;
                 }
                 break;
 
@@ -241,6 +247,7 @@ public class Player extends Entity{
                 if(attacking == true) {
                     if(spriteNum == 1) {image = attackDown1;}
                     if(spriteNum == 2) {image = attackDown2;}
+                    drawHeight = gp.tileSize * 2;
                 }
                 break;
 
@@ -252,6 +259,8 @@ public class Player extends Entity{
                 if(attacking == true) {
                     if(spriteNum == 1) {image = attackLeft1;}
                     if(spriteNum == 2) {image = attackLeft2;}
+                    drawWidth = gp.tileSize * 2;
+                    drawX = screenX - gp.tileSize;
                 }
                 break;
 
@@ -263,9 +272,11 @@ public class Player extends Entity{
                 if(attacking == true) {
                     if(spriteNum == 1) {image = attackRight1;}
                     if(spriteNum == 2) {image = attackRight2;}
+                    drawWidth = gp.tileSize * 2;
                 }
                 break;
-                default:
+
+            default:
                 break;
         }
 
@@ -274,7 +285,7 @@ public class Player extends Entity{
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, drawX, drawY, drawWidth, drawHeight, null);
 
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
