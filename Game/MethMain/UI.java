@@ -18,12 +18,12 @@ public class UI
     Graphics2D g2;
     Font font;
     BufferedImage heart_full, heart_half, heart_empty;
+    
     public String[] mathPrompt = new String[100];
     public String[] mathPromptAnswer = new String[100];
     public String currentPrompt = "";   // stores the last shown math prompt
     public boolean correctEnemySlain = false; // persist between frames
     public int currentPromptIndex = 0;
-
     
     public UI(MethGamePanel gp)
     {
@@ -140,7 +140,7 @@ public class UI
 
     public String setMathPrompt()
     {
-        // only change the prompt if the correct enemy was slain
+        // change the prompt if the correct enemy was slain
         if (correctEnemySlain)
         {
             Random random = new Random();
@@ -148,12 +148,10 @@ public class UI
             currentPrompt = mathPrompt[currentPromptIndex];
             correctEnemySlain = false;
 
-            // ⬇️ Now that prompt has changed, reassign monsters
             gp.aSetter.setMonster();
         }
 
-
-        return currentPrompt; // always return the last shown prompt
+        return currentPrompt; // return last shown prompt
     }
 
 }

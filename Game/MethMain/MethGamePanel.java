@@ -17,8 +17,8 @@ import Game.Entity.Player;
 import Game.MethTile.TileManager;
 import Game.monster.MON_YellowSlime;
 
-public class MethGamePanel extends JPanel implements Runnable {
-
+public class MethGamePanel extends JPanel implements Runnable 
+{
     // Screen Settings
     final int originalTileSize = 16; // 16 by 16 tiles
     final int scale = 3; // since its a 2D game NES only covers 256 by 256 so 16 by 16 looks very small in 1920 by 1080
@@ -57,13 +57,13 @@ public class MethGamePanel extends JPanel implements Runnable {
 
     public Player player = new Player(this, methH);
 
-
     int timeLeft = 60;
     public int score = 0;
     long lastTimerCheck = System.currentTimeMillis();
     boolean gameOver = false;
 
-    public MethGamePanel() {
+    public MethGamePanel() 
+    {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
         this.setDoubleBuffered(true);
@@ -71,13 +71,15 @@ public class MethGamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-    public void setupGame() {
+    public void setupGame() 
+    {
         playMusic(0);
         aSetter.setNPC();
         aSetter.setMonster();
     }
 
-    public void startGameThread() {
+    public void startGameThread() 
+    {
         gameThread = new Thread(this);
         gameThread.start();
     }
@@ -113,8 +115,8 @@ public class MethGamePanel extends JPanel implements Runnable {
     //    }
     // }
 
-    public void run( ) {
-
+    public void run() 
+    {
         double drawInterval = 1000000000/FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -122,62 +124,62 @@ public class MethGamePanel extends JPanel implements Runnable {
         long timer = 0;
         int drawCount = 0;
 
-
-
-         while (gameThread != null) {
-
+        while (gameThread != null) 
+        {
             currentTime = System.nanoTime();
 
             delta += (currentTime - lastTime) / drawInterval;
             timer += (currentTime - lastTime);
             lastTime = currentTime;
 
-            if(delta >= 1) {
-
+            if(delta >= 1) 
+            {
                 update();
                 repaint();
                 delta--; 
                 drawCount++;
-
             }
 
-            if(timer >= 1000000000) {
-
+            if(timer >= 1000000000) 
+            {
                 System.out.println("FPS: "+ drawCount);
                 drawCount = 0;
                 timer = 0;
-                
             }
-
-
         }
     }
 
-    public void update() {
+    public void update() 
+    {
         if (gameOver) return;
 
         player.update();
 
-        for (int i = 0; i < npc.length; i++) {
+        for (int i = 0; i < npc.length; i++) 
+        {
             if (npc[i] != null) npc[i].update();
         }
 
-        for (int i = 0; i < monster.length; i++) {
+        for (int i = 0; i < monster.length; i++) 
+        {
             if (monster[i] != null) monster[i].update();
         }
 
-        if (System.currentTimeMillis() - lastTimerCheck >= 1000) {
+        if (System.currentTimeMillis() - lastTimerCheck >= 1000) 
+        {
             timeLeft--;
             lastTimerCheck = System.currentTimeMillis();
         }
 
-        if (timeLeft <= 0 || player.life <= 0) {
+        if (timeLeft <= 0 || player.life <= 0) 
+        {
             gameOver = true;
             stopMusic();
         }
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) 
+    {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
@@ -187,25 +189,30 @@ public class MethGamePanel extends JPanel implements Runnable {
         entityList.add(player);
 
         // npc
-        for (int i = 0; i < npc.length; i++) {
+        for (int i = 0; i < npc.length; i++) 
+        {
             if (npc[i] != null) entityList.add(npc[i]);
         }
 
         // monster
-        for (int i = 0; i < monster.length; i++) {
+        for (int i = 0; i < monster.length; i++) 
+        {
             if (monster[i] != null) entityList.add(monster[i]);
         }
 
         // sort
-        Collections.sort(entityList, new Comparator<Entity>() {
+        Collections.sort(entityList, new Comparator<Entity>() 
+        {
             @Override
-            public int compare(Entity e1, Entity e2) {
+            public int compare(Entity e1, Entity e2) 
+            {
                 return Integer.compare(e1.worldY, e2.worldY);
             }
         });
 
         // draw entities
-        for (Entity e : entityList) {
+        for (Entity e : entityList) 
+        {
             e.draw(g2);
         }
 
@@ -213,7 +220,6 @@ public class MethGamePanel extends JPanel implements Runnable {
         entityList.clear();
         g2.setColor(Color.white);
 
-        // 
         g2.setFont(new Font("Monospaced", Font.BOLD, 24));
 
         String timerText = "Time: " + timeLeft;
@@ -226,7 +232,8 @@ public class MethGamePanel extends JPanel implements Runnable {
 
         ui.draw(g2);
 
-        if (gameOver) {
+        if (gameOver) 
+        {
             g2.setColor(new Color(0, 0, 0, 200));
             g2.fillRect(0, 0, screenWidth, screenHeight);
 
@@ -256,22 +263,26 @@ public class MethGamePanel extends JPanel implements Runnable {
         g2.dispose();
     }
 
-    public void playMusic(int i) {
+    public void playMusic(int i) 
+    {
         sound.setFile(i);
         sound.play();
         sound.loop();
     }
 
-    public void stopMusic() {
+    public void stopMusic() 
+    {
         sound.stop();
     }
 
-    public void playSFX(int i) {
+    public void playSFX(int i) 
+    {
         sound.setFile(i);
         sound.play();
     }
 
-    public void restartGame() {
+    public void restartGame() 
+    {
         gameOver = false;
         timeLeft = 60;
         score = 0;
@@ -282,44 +293,53 @@ public class MethGamePanel extends JPanel implements Runnable {
         playMusic(0);
     }
 
-   public void spawnMonster(int index, boolean isCorrect) {
-    MON_YellowSlime newMonster = new MON_YellowSlime(this);
-    CollisionChecker cc = new CollisionChecker(this);
-    boolean validSpawn = false;
+   public void spawnMonster(int index, boolean isCorrect) 
+   {
+        MON_YellowSlime newMonster = new MON_YellowSlime(this);
+        CollisionChecker cc = new CollisionChecker(this);
+        boolean validSpawn = false;
 
-    while (!validSpawn) {
-        int col = (int)(Math.random() * maxWorldCol);
-        int row = (int)(Math.random() * maxWorldRow);
-        newMonster.worldX = col * tileSize;
-        newMonster.worldY = row * tileSize;
-        newMonster.collisionOn = false;
-        cc.checkTile(newMonster);
-        if (!newMonster.collisionOn) {
-            validSpawn = true;
+        while (!validSpawn) 
+        {
+            int col = (int)(Math.random() * maxWorldCol);
+            int row = (int)(Math.random() * maxWorldRow);
+
+            newMonster.worldX = col * tileSize;
+            newMonster.worldY = row * tileSize;
+            newMonster.collisionOn = false;
+
+            cc.checkTile(newMonster);
+
+            if (!newMonster.collisionOn) 
+            {
+                validSpawn = true;
+            }
         }
-    }
 
-    monster[index] = newMonster;
+        monster[index] = newMonster;
 
-    // ✅ get the correct answer based on the current prompt
-    String correctAnswer = "";
-    for (int i = 0; i < ui.mathPrompt.length; i++) {
-        if (ui.mathPrompt[i] != null && ui.mathPrompt[i].equals(ui.currentPrompt)) {
-            correctAnswer = ui.mathPromptAnswer[i];
-            break;
+        // correct answer for prompt
+        String correctAnswer = "";
+        for (int i = 0; i < ui.mathPrompt.length; i++) 
+        {
+            if (ui.mathPrompt[i] != null && ui.mathPrompt[i].equals(ui.currentPrompt)) 
+            {
+                correctAnswer = ui.mathPromptAnswer[i];
+                break;
+            }
         }
+
+        if (isCorrect) 
+        {
+            newMonster.displayText = "A: " + correctAnswer;
+            newMonster.holdsCorrectAnswer = true;
+        } 
+        else 
+        {
+            newMonster.displayText = "A: " + (int)(Math.random() * 99 + 1);
+            newMonster.holdsCorrectAnswer = false;
+        }
+
+        newMonster.showText = true;
     }
-
-    // ✅ assign text based on whether this monster is the correct one
-    if (isCorrect) {
-        newMonster.displayText = "A: " + correctAnswer;
-        newMonster.holdsCorrectAnswer = true;
-    } else {
-        newMonster.displayText = "A: " + (int)(Math.random() * 99 + 1);
-        newMonster.holdsCorrectAnswer = false;
-    }
-
-    newMonster.showText = true;
-}
-
 }

@@ -10,14 +10,14 @@ import javax.imageio.ImageIO;
 
 import Game.MethMain.MethGamePanel;
 
-public class TileManager {
-
+public class TileManager 
+{
     MethGamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
 
-    public TileManager(MethGamePanel gp) {
-
+    public TileManager(MethGamePanel gp) 
+    {
         this.gp = gp;
 
         tile = new Tile[50];
@@ -25,13 +25,12 @@ public class TileManager {
 
         getTileImage();
         loadMap();
-
     }
     
-    public void getTileImage() {
-
-        try {
-            
+    public void getTileImage() 
+    {
+        try 
+        {
             File t0 = new File("Game/Res/Tiles/main_grass_16.png");
             File t1 = new File("Game/Res/Tiles/cobble_wall_16.png");
             File t2 = new File("Game/Res/Tiles/final_water_16.png");
@@ -158,17 +157,18 @@ public class TileManager {
             tile[27] = new Tile(); //waterfall bottom
             tile[27].image = ImageIO.read(t27);
             tile[27].collision = true;
-
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             e.printStackTrace();
         }
 
     }
 
-    public void loadMap() {
-
-        try {
-
+    public void loadMap()
+    {
+        try 
+        {
             // WAG PALITAN PLSSDKFJDSLAFAKLWEFHJK
             InputStream is = getClass().getResourceAsStream("/Game/Res/Maps/map02.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -176,45 +176,45 @@ public class TileManager {
             int col = 0;
             int row = 0;
 
-            while(col < gp.maxWorldCol && row < gp.maxWorldRow) {
-
+            while(col < gp.maxWorldCol && row < gp.maxWorldRow) 
+            {
                 String line = br.readLine();
-                
 
-                while (col < gp.maxWorldCol) {
-                    
+                while (col < gp.maxWorldCol) 
+                {
                     String number[] = line.split(" ");
 
                     int num = Integer.parseInt(number[col]);
 
-
-
                     mapTileNum[col][row] = num;
                     col++;
                 }
-                if(col == gp.maxWorldCol) {
+
+                if(col == gp.maxWorldCol)
+                {
                     col = 0;
                     row++;
                 }
             }
-            br.close();
 
-        } catch (Exception e) {
+            br.close();
+        } 
+        catch (Exception e) 
+        {
 
         }
 
     }
 
 
-    public void draw(Graphics2D g2) {
-
+    public void draw(Graphics2D g2) 
+    {
        int worldCol = 0;
        int worldRow = 0;
 
-        while (worldCol < gp.maxWorldCol && worldRow < gp .maxWorldRow) {
-            
+        while (worldCol < gp.maxWorldCol && worldRow < gp .maxWorldRow)
+        {
             int tileNum = mapTileNum [worldCol][worldRow];
-
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
@@ -224,16 +224,16 @@ public class TileManager {
             //    worldX - gp.tileSize < gp.player./worldX + gp.player.screenX &&
             //    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
             //    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY)
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize,null); 
-
-                worldCol++;
-
-                if (worldCol == gp.maxWorldCol) {
-                    worldCol = 0;
-                    worldRow++;
-                }
             
-            
+            g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize,null); 
+
+            worldCol++;
+
+            if (worldCol == gp.maxWorldCol) 
+            {
+                worldCol = 0;
+                worldRow++;
+            }
         }
     }
 }
