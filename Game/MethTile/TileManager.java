@@ -17,111 +17,123 @@ public class TileManager {
         getTileImage();
         loadMap();
     }
-    public void getTileImage() {
-        try {
-            File t0 = new File("Game/Res/Tiles/main_grass_16.png");
-            File t1 = new File("Game/Res/Tiles/cobble_wall_16.png");
-            File t2 = new File("Game/Res/Tiles/final_water_16.png");
-            File t3 = new File("Game/Res/Tiles/final_rock_16.png");     
-            File t4 = new File("Game/Res/Tiles/tree_16.png");     
-            File t5 = new File("Game/Res/Tiles/grass_bottom_edge_16.png");     
-            File t6 = new File("Game/Res/Tiles/cliff_side_16.png");     
-            File t7 = new File("Game/Res/Tiles/autumn_leave_16.png");     
-            File t8 = new File("Game/Res/Tiles/leaves_on_water_16.png");
-            File t9 = new File("Game/Res/Tiles/lily_pad_16.png");     
-            File t10 = new File("Game/Res/Tiles/top_left_autumn_tree.png");
-            File t11 = new File("Game/Res/Tiles/top_right_autumn_tree.png");
-            File t12 = new File("Game/Res/Tiles/bottom_left_autumn_tree.png");     
-            File t13 = new File("Game/Res/Tiles/bottom_right_autumn_tree.png"); 
-            File t14 = new File("Game/Res/Tiles/grass_bottom_left_edge_16.png");     
-            File t15 = new File("Game/Res/Tiles/grass_bottom_right_edge_16.png");     
-            File t16 = new File("Game/Res/Tiles/grass_left_edge_16.png");     
-            File t17 = new File("Game/Res/Tiles/grass_micro_bottom_left_edge_16.png");
-            File t18 = new File("Game/Res/Tiles/grass_micro_bottom_right_edge_16.png");     
-            File t19 = new File("Game/Res/Tiles/grass_right_edge_16.png");
-            File t20 = new File("Game/Res/Tiles/grass_top_edge_16.png");
-            File t21 = new File("Game/Res/Tiles/grass_top_left_edge_16.png");     
-            File t22 = new File("Game/Res/Tiles/grass_top_right_edge_16.png"); 
-            File t23 = new File("Game/Res/Tiles/autumn_tree_16.png");     
-            File t24 = new File("Game/Res/Tiles/grass_covered_autumn_leaves_16.png");
-            File t25 = new File("Game/Res/Tiles/wood_plank_16.png");
-            File t26 = new File("Game/Res/Tiles/waterfall_top_16.png");     
-            File t27 = new File("Game/Res/Tiles/waterfall_bottom_16.png"); 
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(t0);
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(t1);
+    
+    public void getTileImage() 
+    {
+        try 
+        {
+            // define helper function to load image
+            java.util.function.Function<String, java.awt.image.BufferedImage> load = path -> {
+                try (InputStream is = getClass().getResourceAsStream("/" + path)) {
+                    return ImageIO.read(is);
+                } catch (Exception e) {
+                    System.out.println("Could not load: " + path);
+                    return null;
+                }
+            };
+
+            tile[0] = new Tile(); // grass
+            tile[0].image = load.apply("Game/Res/Tiles/main_grass_16.png");
+
+            tile[1] = new Tile(); // cobble
+            tile[1].image = load.apply("Game/Res/Tiles/cobble_wall_16.png");
             tile[1].collision = true;
-            tile[2] = new Tile();
-            tile[2].image = ImageIO.read(t2);
+
+            tile[2] = new Tile(); // water
+            tile[2].image = load.apply("Game/Res/Tiles/final_water_16.png");
             tile[2].collision = true;
-            tile[3] = new Tile();
-            tile[3].image = ImageIO.read(t3);
+
+            tile[3] = new Tile(); // rock
+            tile[3].image = load.apply("Game/Res/Tiles/final_rock_16.png");
             tile[3].collision = true;
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(t4);
+
+            tile[4] = new Tile(); // tree
+            tile[4].image = load.apply("Game/Res/Tiles/tree_16.png");
             tile[4].collision = true;
+
             tile[5] = new Tile();
-            tile[5].image = ImageIO.read(t5);
+            tile[5].image = load.apply("Game/Res/Tiles/grass_bottom_edge_16.png");
+
             tile[6] = new Tile();
-            tile[6].image = ImageIO.read(t6);
+            tile[6].image = load.apply("Game/Res/Tiles/cliff_side_16.png");
             tile[6].collision = true;
+
             tile[7] = new Tile();
-            tile[7].image = ImageIO.read(t7);
+            tile[7].image = load.apply("Game/Res/Tiles/autumn_leave_16.png");
+
             tile[8] = new Tile();
-            tile[8].image = ImageIO.read(t8);
+            tile[8].image = load.apply("Game/Res/Tiles/leaves_on_water_16.png");
             tile[8].collision = true;
+
             tile[9] = new Tile();
-            tile[9].image = ImageIO.read(t9);
+            tile[9].image = load.apply("Game/Res/Tiles/lily_pad_16.png");
             tile[9].collision = true;
+
             tile[10] = new Tile();
-            tile[10].image = ImageIO.read(t10);
+            tile[10].image = load.apply("Game/Res/Tiles/top_left_autumn_tree.png");
             tile[10].collision = true;
+
             tile[11] = new Tile();
-            tile[11].image = ImageIO.read(t11);
+            tile[11].image = load.apply("Game/Res/Tiles/top_right_autumn_tree.png");
             tile[11].collision = true;
+
             tile[12] = new Tile();
-            tile[12].image = ImageIO.read(t12);
+            tile[12].image = load.apply("Game/Res/Tiles/bottom_left_autumn_tree.png");
             tile[12].collision = true;
+
             tile[13] = new Tile();
-            tile[13].image = ImageIO.read(t13);
+            tile[13].image = load.apply("Game/Res/Tiles/bottom_right_autumn_tree.png");
             tile[13].collision = true;
+
             tile[14] = new Tile();
-            tile[14].image = ImageIO.read(t14);
+            tile[14].image = load.apply("Game/Res/Tiles/grass_bottom_left_edge_16.png");
+
             tile[15] = new Tile();
-            tile[15].image = ImageIO.read(t15);
+            tile[15].image = load.apply("Game/Res/Tiles/grass_bottom_right_edge_16.png");
+
             tile[16] = new Tile();
-            tile[16].image = ImageIO.read(t16);
+            tile[16].image = load.apply("Game/Res/Tiles/grass_left_edge_16.png");
+
             tile[17] = new Tile();
-            tile[17].image = ImageIO.read(t17);
+            tile[17].image = load.apply("Game/Res/Tiles/grass_micro_bottom_left_edge_16.png");
+
             tile[18] = new Tile();
-            tile[18].image = ImageIO.read(t18);
+            tile[18].image = load.apply("Game/Res/Tiles/grass_micro_bottom_right_edge_16.png");
+
             tile[19] = new Tile();
-            tile[19].image = ImageIO.read(t19);
+            tile[19].image = load.apply("Game/Res/Tiles/grass_right_edge_16.png");
+
             tile[20] = new Tile();
-            tile[20].image = ImageIO.read(t20);
+            tile[20].image = load.apply("Game/Res/Tiles/grass_top_edge_16.png");
+
             tile[21] = new Tile();
-            tile[21].image = ImageIO.read(t21);
+            tile[21].image = load.apply("Game/Res/Tiles/grass_top_left_edge_16.png");
+
             tile[22] = new Tile();
-            tile[22].image = ImageIO.read(t22);
+            tile[22].image = load.apply("Game/Res/Tiles/grass_top_right_edge_16.png");
+
             tile[23] = new Tile();
-            tile[23].image = ImageIO.read(t23);
+            tile[23].image = load.apply("Game/Res/Tiles/autumn_tree_16.png");
             tile[23].collision = true;
+
             tile[24] = new Tile();
-            tile[24].image = ImageIO.read(t24);
+            tile[24].image = load.apply("Game/Res/Tiles/grass_covered_autumn_leaves_16.png");
+
             tile[25] = new Tile();
-            tile[25].image = ImageIO.read(t25);
+            tile[25].image = load.apply("Game/Res/Tiles/wood_plank_16.png");
+
             tile[26] = new Tile();
-            tile[26].image = ImageIO.read(t26);
+            tile[26].image = load.apply("Game/Res/Tiles/waterfall_top_16.png");
             tile[26].collision = true;
+
             tile[27] = new Tile();
-            tile[27].image = ImageIO.read(t27);
+            tile[27].image = load.apply("Game/Res/Tiles/waterfall_bottom_16.png");
             tile[27].collision = true;
+
         } 
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     public void loadMap() {
         try {
