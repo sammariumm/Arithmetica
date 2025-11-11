@@ -58,7 +58,7 @@ public class MethGamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, methH);
 
 
-    int timeLeft = 60;
+    int timeLeft = 100;
     public int score = 0;
     long lastTimerCheck = System.currentTimeMillis();
     boolean gameOver = false;
@@ -273,7 +273,7 @@ public class MethGamePanel extends JPanel implements Runnable {
 
     public void restartGame() {
         gameOver = false;
-        timeLeft = 60;
+        timeLeft = 100;
         score = 0;
         player.life = player.maxLife;
         player.setDefaultValues();
@@ -312,10 +312,10 @@ public class MethGamePanel extends JPanel implements Runnable {
 
     // ✅ assign text based on whether this monster is the correct one
     if (isCorrect) {
-        newMonster.displayText = "A: " + correctAnswer;
+        newMonster.displayText = "" + correctAnswer;
         newMonster.holdsCorrectAnswer = true;
     } else {
-        newMonster.displayText = "A: " + (int)(Math.random() * 99 + 1);
+        newMonster.displayText = "" + (int)(Math.random() * 99 + 1);
         newMonster.holdsCorrectAnswer = false;
     }
 

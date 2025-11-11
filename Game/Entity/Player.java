@@ -46,7 +46,7 @@ public class Player extends Entity{
 
         worldX = 640;
         worldY = 900;
-        speed = 4;
+        speed = 6;
         direction = "down";
 
         // player stat
