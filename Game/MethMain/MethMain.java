@@ -1,4 +1,5 @@
 package Game.MethMain;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -11,7 +12,6 @@ import java.awt.RenderingHints;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -27,6 +27,7 @@ public class MethMain
         SwingUtilities.invokeLater(() -> new BackgroundSlideshow().start());
     }
 }
+
 class BackgroundSlideshow 
 {
     private final int WINDOW_WIDTH = 960;
@@ -79,21 +80,21 @@ class BackgroundSlideshow
 
         for (String path : paths) 
         {
-            ImageIcon icon = new ImageIcon(path);
-
-            if (icon.getIconWidth() > 0) 
+            java.net.URL url = getClass().getResource("/" + path);
+            if (url != null) 
             {
-                images.add(icon.getImage());
+                images.add(new ImageIcon(url).getImage());
             } 
             else 
             {
-                System.err.println("Could not load image: " + path);
+                System.err.println("Could not load resource: " + path);
             }
         }
 
         return images;
     }
 }
+
 class FadePanel extends JPanel 
 {
     private final ArrayList<Image> images;
@@ -119,13 +120,14 @@ class FadePanel extends JPanel
         setLayout(null);
         setDoubleBuffered(true);
 
-        ImageIcon logoIcon = new ImageIcon(logoPath);
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/" + logoPath));
         logoLabel = new JLabel(logoIcon);
         add(logoLabel);
 
         for (int i = 0; i < 3; i++) 
         {
-            ImageIcon btnIcon = new ImageIcon(buttonPaths[i]);
+            java.net.URL btnUrl = getClass().getResource("/" + buttonPaths[i]);
+            ImageIcon btnIcon = btnUrl != null ? new ImageIcon(btnUrl) : null;
             JButton btn = new JButton(btnIcon);
             btn.setBorderPainted(false);
             btn.setContentAreaFilled(false);
@@ -166,6 +168,7 @@ class FadePanel extends JPanel
         {
             JButton btn = buttons[i];
             ImageIcon icon = (ImageIcon) btn.getIcon();
+            if (icon == null) continue;
             int btnWidth = icon.getIconWidth();
             int btnHeight = icon.getIconHeight();
             int btnX = (panelWidth - btnWidth) / 2;
@@ -179,12 +182,12 @@ class FadePanel extends JPanel
     void fadeToNext() 
     {
         if (images.size() < 2) return;
-            nextImage = images.get((currentIndex + 1) % images.size());
+        nextImage = images.get((currentIndex + 1) % images.size());
 
         alpha = 0f;
 
         if (fadeTimer != null && fadeTimer.isRunning()) fadeTimer.stop();
-            fadeTimer = new Timer(40, e -> {
+        fadeTimer = new Timer(40, e -> {
             alpha += 0.05f;
             if (alpha >= 1f) 
             {
@@ -204,7 +207,7 @@ class FadePanel extends JPanel
     {
         super.paintComponent(g);
         if (currentImage == null) return;
-            Graphics2D g2d = (Graphics2D) g.create();
+        Graphics2D g2d = (Graphics2D) g.create();
 
         int width = getWidth();
         int height = getHeight();
@@ -297,15 +300,15 @@ class CreditsWindow extends JFrame
 
         CreditsPanel() 
         {
-            backgroundGif = new ImageIcon("Game/Res/background_image_4.gif");
-            logoIcon = new ImageIcon("Game/Res/logo.png");
+            backgroundGif = new ImageIcon(getClass().getResource("/Game/Res/background_image_4.gif"));
+            logoIcon = new ImageIcon(getClass().getResource("/Game/Res/logo.png"));
             setDoubleBuffered(true);
             setBackground(Color.BLACK);
             setForeground(Color.WHITE);
             try 
             {
                 retroFont = Font.createFont(Font.TRUETYPE_FONT,
-                        new java.io.File("Game/Res/PressStart2P.ttf"))
+                        getClass().getResourceAsStream("/Game/Res/PressStart2P.ttf"))
                         .deriveFont(Font.PLAIN, 16);
                 GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(retroFont);
             } 
@@ -402,7 +405,7 @@ class CreditsWindow extends JFrame
                 else
                     alpha = 1f;
                 
-                    alpha = clamp(alpha, 0f, 1f);
+                alpha = clamp(alpha, 0f, 1f);
                 g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
                 g2.drawImage(logoIcon.getImage(), logoX, logoStartY, this);
                 
