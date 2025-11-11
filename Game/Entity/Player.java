@@ -246,21 +246,25 @@ public class Player extends Entity{
         }
     }
 
-    public void damageMonster(int i) {
+    public void damageMonster(int i) 
+    {
 
-        if(i != 999) {
+        if(i != 999) 
+        {
 
-            if(gp.monster[i].invincible == false) {
-
+            if(gp.monster[i].invincible == false) 
+            {
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
-
-                if(gp.monster[i].life <= 0){
+                if(gp.monster[i].life <= 0)
+                {
                     gp.monster[i] = null;
+                    gp.score += 67;
                 }
             }
         }
     }
+
 
     public void draw(Graphics2D g2) {
 

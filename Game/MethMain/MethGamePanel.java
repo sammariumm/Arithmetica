@@ -56,7 +56,7 @@ public class MethGamePanel extends JPanel implements Runnable {
     public Player player = new Player(this, methH);
 
     int timeLeft = 60;
-    int score = 0;
+    public int score = 0;
     long lastTimerCheck = System.currentTimeMillis();
     boolean gameOver = false;
 
