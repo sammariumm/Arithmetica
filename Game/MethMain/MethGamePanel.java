@@ -232,13 +232,13 @@ public class MethGamePanel extends JPanel implements Runnable {
             g2.setColor(Color.white);
 
             g2.setFont(new Font("Monospaced", Font.BOLD, 18));
-            String text = "HAHAHAHHA BOBO AMP";
+            String text = "Game over!";
             int x = screenWidth / 2 - g2.getFontMetrics().stringWidth(text) / 2;
             int y = screenHeight / 2 - 100;
             g2.drawString(text, x, y);
 
             g2.setFont(new Font("Monospaced", Font.BOLD, 18));
-            String scoreSummary = "Your Score: " + score;
+            String scoreSummary = "Your score: " + score;
             x = screenWidth / 2 - g2.getFontMetrics().stringWidth(scoreSummary) / 2;
             y += 60;
             g2.drawString(scoreSummary, x, y);

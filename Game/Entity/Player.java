@@ -243,7 +243,7 @@ public class Player extends Entity{
                 life -= 1;
                 invincible = true;
             }
-            System.out.println("BURAT");
+            System.out.println("Hit");
         }
     }
 
@@ -263,7 +263,7 @@ public class Player extends Entity{
                     if (correct) {
                         gp.score += 67;
                         gp.ui.correctEnemySlain = true;
-                        System.out.println("nadale mo");
+                        System.out.println("Defeated");
 
                         // choose new correct monster (after respawning)
                         Random random = new Random();

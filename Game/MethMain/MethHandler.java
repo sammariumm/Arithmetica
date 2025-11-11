@@ -40,7 +40,7 @@ public class MethHandler implements KeyListener {
 
         if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
-            System.out.println("luh may burat");
+            System.out.println("Enter pressed");
 
             if (gamePanel.gameOver) {
                 gamePanel.restartGame();

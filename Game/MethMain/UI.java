@@ -18,7 +18,7 @@ public class UI
     Graphics2D g2;
     Font font;
     BufferedImage heart_full, heart_half, heart_empty;
-    String[] mathPrompt = new String[10];
+    String[] mathPrompt = new String[100];
     String currentPrompt = "";   // stores the last shown math prompt
     public boolean correctEnemySlain = false; // persist between frames
     
@@ -35,11 +35,16 @@ public class UI
         heart_empty = heart.image3;
 
         // Initialize prompts
-        mathPrompt[0] = "1 + 1";
-        mathPrompt[1] = "2 + 2";
-        mathPrompt[2] = "given an integral";
-        mathPrompt[3] = "burat k ba";
-        mathPrompt[4] = "hihi";
+        mathPrompt[0] = "3 + 7";
+        mathPrompt[1] = "1 + 5";
+        mathPrompt[2] = "2 x 7";
+        mathPrompt[3] = "6 x 5";
+        mathPrompt[4] = "8 - 4";
+        mathPrompt[5] = "3 - 1";
+        mathPrompt[6] = "9 x 8";
+        mathPrompt[7] = "9 + 6";
+        mathPrompt[8] = "4 - 2";
+        mathPrompt[9] = "4 x 5";
 
         // start with one prompt
         currentPrompt = mathPrompt[2];
@@ -124,7 +129,7 @@ public class UI
         if (correctEnemySlain)
         {
             Random random = new Random();
-            int index = random.nextInt(5); // 0–4
+            int index = random.nextInt(10); // 0–9
 
             currentPrompt = mathPrompt[index];
             correctEnemySlain = false; // reset flag after updating
