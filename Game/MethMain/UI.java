@@ -10,6 +10,7 @@ import Game.MethMain.MethGamePanel;
 import Game.Entity.Entity;
 
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 public class UI 
@@ -29,7 +30,7 @@ public class UI
     {
         this.gp = gp;
 
-        font = new Font("Arial", Font.PLAIN, 40);
+        font = new Font("Monospaced", Font.BOLD, 24);
 
         // create new obj
         Entity heart = new OBJ_Heart(gp);
@@ -37,211 +38,59 @@ public class UI
         heart_half = heart.image2;
         heart_empty = heart.image3;
 
-        // mathPrompt
-        mathPrompt[0] = "12 + 7";
-        mathPrompt[1] = "8 x 5";
-        mathPrompt[2] = "45 - 23";
-        mathPrompt[3] = "9 x 7";
-        mathPrompt[4] = "33 + 21";
-        mathPrompt[5] = "14 - 18";
-        mathPrompt[6] = "6 x 9";
-        mathPrompt[7] = "27 + 15";
-        mathPrompt[8] = "5 x 8";
-        mathPrompt[9] = "40 - 12";
-        mathPrompt[10] = "11 + 34";
-        mathPrompt[11] = "7 x 6";
-        mathPrompt[12] = "50 - 55";
-        mathPrompt[13] = "8 x 9";
-        mathPrompt[14] = "23 + 12";
-        mathPrompt[15] = "9 x 5";
-        mathPrompt[16] = "67 - 34";
-        mathPrompt[17] = "6 x 7";
-        mathPrompt[18] = "14 + 29";
-        mathPrompt[19] = "8 x 5";
-        mathPrompt[20] = "78 - 42";
-        mathPrompt[21] = "9 x 8";
-        mathPrompt[22] = "19 + 17";
-        mathPrompt[23] = "5 x 6";
-        mathPrompt[24] = "33 - 40";
-        mathPrompt[25] = "7 x 9";
-        mathPrompt[26] = "22 + 18";
-        mathPrompt[27] = "8 x 7";
-        mathPrompt[28] = "60 - 25";
-        mathPrompt[29] = "6 x 5";
-        mathPrompt[30] = "44 + 11";
-        mathPrompt[31] = "9 x 6";
-        mathPrompt[32] = "30 - 35";
-        mathPrompt[33] = "7 x 8";
-        mathPrompt[34] = "28 + 19";
-        mathPrompt[35] = "5 x 9";
-        mathPrompt[36] = "49 - 20";
-        mathPrompt[37] = "6 x 8";
-        mathPrompt[38] = "33 + 27";
-        mathPrompt[39] = "8 x 6";
-        mathPrompt[40] = "21 - 30";
-        mathPrompt[41] = "9 x 7";
-        mathPrompt[42] = "15 + 44";
-        mathPrompt[43] = "7 x 5";
-        mathPrompt[44] = "55 - 22";
-        mathPrompt[45] = "8 x 8";
-        mathPrompt[46] = "18 + 23";
-        mathPrompt[47] = "6 x 6";
-        mathPrompt[48] = "39 - 45";
-        mathPrompt[49] = "9 x 5";
-        mathPrompt[50] = "25 + 37";
-        mathPrompt[51] = "7 x 9";
-        mathPrompt[52] = "61 - 28";
-        mathPrompt[53] = "8 x 6";
-        mathPrompt[54] = "14 + 42";
-        mathPrompt[55] = "5 x 8";
-        mathPrompt[56] = "50 - 30";
-        mathPrompt[57] = "6 x 7";
-        mathPrompt[58] = "17 + 26";
-        mathPrompt[59] = "9 x 9";
-        mathPrompt[60] = "40 - 55";
-        mathPrompt[61] = "7 x 6";
-        mathPrompt[62] = "21 + 33";
-        mathPrompt[63] = "8 x 5";
-        mathPrompt[64] = "36 - 18";
-        mathPrompt[65] = "6 x 9";
-        mathPrompt[66] = "29 + 14";
-        mathPrompt[67] = "9 x 7";
-        mathPrompt[68] = "48 - 53";
-        mathPrompt[69] = "5 x 6";
-        mathPrompt[70] = "22 + 41";
-        mathPrompt[71] = "7 x 8";
-        mathPrompt[72] = "33 - 39";
-        mathPrompt[73] = "8 x 9";
-        mathPrompt[74] = "16 + 27";
-        mathPrompt[75] = "6 x 5";
-        mathPrompt[76] = "60 - 47";
-        mathPrompt[77] = "9 x 8";
-        mathPrompt[78] = "12 + 34";
-        mathPrompt[79] = "7 x 6";
-        mathPrompt[80] = "28 - 35";
-        mathPrompt[81] = "5 x 9";
-        mathPrompt[82] = "39 + 22";
-        mathPrompt[83] = "6 x 7";
-        mathPrompt[84] = "45 - 50";
-        mathPrompt[85] = "8 x 5";
-        mathPrompt[86] = "23 + 17";
-        mathPrompt[87] = "9 x 6";
-        mathPrompt[88] = "31 - 40";
-        mathPrompt[89] = "7 x 8";
-        mathPrompt[90] = "14 + 36";
-        mathPrompt[91] = "6 x 9";
-        mathPrompt[92] = "55 - 33";
-        mathPrompt[93] = "8 x 7";
-        mathPrompt[94] = "26 + 15";
-        mathPrompt[95] = "9 x 5";
-        mathPrompt[96] = "41 - 60";
-        mathPrompt[97] = "7 x 6";
-        mathPrompt[98] = "19 + 29";
-        mathPrompt[99] = "5 x 8";
-
-        mathPromptAnswer[0] = "19";
-        mathPromptAnswer[1] = "40";
-        mathPromptAnswer[2] = "22";
-        mathPromptAnswer[3] = "63";
-        mathPromptAnswer[4] = "54";
-        mathPromptAnswer[5] = "-4";
-        mathPromptAnswer[6] = "54";
-        mathPromptAnswer[7] = "42";
-        mathPromptAnswer[8] = "40";
-        mathPromptAnswer[9] = "28";
-        mathPromptAnswer[10] = "45";
-        mathPromptAnswer[11] = "42";
-        mathPromptAnswer[12] = "-5";
-        mathPromptAnswer[13] = "72";
-        mathPromptAnswer[14] = "35";
-        mathPromptAnswer[15] = "45";
-        mathPromptAnswer[16] = "33";
-        mathPromptAnswer[17] = "42";
-        mathPromptAnswer[18] = "43";
-        mathPromptAnswer[19] = "40";
-        mathPromptAnswer[20] = "36";
-        mathPromptAnswer[21] = "72";
-        mathPromptAnswer[22] = "36";
-        mathPromptAnswer[23] = "30";
-        mathPromptAnswer[24] = "-7";
-        mathPromptAnswer[25] = "63";
-        mathPromptAnswer[26] = "40";
-        mathPromptAnswer[27] = "56";
-        mathPromptAnswer[28] = "35";
-        mathPromptAnswer[29] = "30";
-        mathPromptAnswer[30] = "55";
-        mathPromptAnswer[31] = "54";
-        mathPromptAnswer[32] = "-5";
-        mathPromptAnswer[33] = "56";
-        mathPromptAnswer[34] = "47";
-        mathPromptAnswer[35] = "45";
-        mathPromptAnswer[36] = "29";
-        mathPromptAnswer[37] = "48";
-        mathPromptAnswer[38] = "60";
-        mathPromptAnswer[39] = "48";
-        mathPromptAnswer[40] = "-9";
-        mathPromptAnswer[41] = "63";
-        mathPromptAnswer[42] = "59";
-        mathPromptAnswer[43] = "35";
-        mathPromptAnswer[44] = "33";
-        mathPromptAnswer[45] = "64";
-        mathPromptAnswer[46] = "41";
-        mathPromptAnswer[47] = "36";
-        mathPromptAnswer[48] = "-6";
-        mathPromptAnswer[49] = "45";
-        mathPromptAnswer[50] = "62";
-        mathPromptAnswer[51] = "63";
-        mathPromptAnswer[52] = "33";
-        mathPromptAnswer[53] = "48";
-        mathPromptAnswer[54] = "56";
-        mathPromptAnswer[55] = "40";
-        mathPromptAnswer[56] = "20";
-        mathPromptAnswer[57] = "42";
-        mathPromptAnswer[58] = "43";
-        mathPromptAnswer[59] = "81";
-        mathPromptAnswer[60] = "-15";
-        mathPromptAnswer[61] = "42";
-        mathPromptAnswer[62] = "54";
-        mathPromptAnswer[63] = "40";
-        mathPromptAnswer[64] = "18";
-        mathPromptAnswer[65] = "54";
-        mathPromptAnswer[66] = "43";
-        mathPromptAnswer[67] = "63";
-        mathPromptAnswer[68] = "-5";
-        mathPromptAnswer[69] = "30";
-        mathPromptAnswer[70] = "63";
-        mathPromptAnswer[71] = "56";
-        mathPromptAnswer[72] = "-6";
-        mathPromptAnswer[73] = "72";
-        mathPromptAnswer[74] = "43";
-        mathPromptAnswer[75] = "30";
-        mathPromptAnswer[76] = "13";
-        mathPromptAnswer[77] = "72";
-        mathPromptAnswer[78] = "46";
-        mathPromptAnswer[79] = "42";
-        mathPromptAnswer[80] = "-7";
-        mathPromptAnswer[81] = "45";
-        mathPromptAnswer[82] = "61";
-        mathPromptAnswer[83] = "42";
-        mathPromptAnswer[84] = "-5";
-        mathPromptAnswer[85] = "40";
-        mathPromptAnswer[86] = "40";
-        mathPromptAnswer[87] = "54";
-        mathPromptAnswer[88] = "-9";
-        mathPromptAnswer[89] = "56";
-        mathPromptAnswer[90] = "50";
-        mathPromptAnswer[91] = "54";
-        mathPromptAnswer[92] = "22";
-        mathPromptAnswer[93] = "56";
-        mathPromptAnswer[94] = "41";
-        mathPromptAnswer[95] = "45";
-        mathPromptAnswer[96] = "-19";
-        mathPromptAnswer[97] = "42";
-        mathPromptAnswer[98] = "48";
-        mathPromptAnswer[99] = "40";
+        mathPrompt[0] = "12 + 97"; mathPromptAnswer[0] = "109";
+        mathPrompt[1] = "85 - 23"; mathPromptAnswer[1] = "62";
+        mathPrompt[2] = "9 x 6"; mathPromptAnswer[2] = "54";
+        mathPrompt[3] = "-44 - 12"; mathPromptAnswer[3] = "-56";
+        mathPrompt[4] = "7 x 8"; mathPromptAnswer[4] = "56";
+        mathPrompt[5] = "132 - 55"; mathPromptAnswer[5] = "77";
+        mathPrompt[6] = "3 x 9"; mathPromptAnswer[6] = "27";
+        mathPrompt[7] = "-90 + 78"; mathPromptAnswer[7] = "-12";
+        mathPrompt[8] = "65 + 38"; mathPromptAnswer[8] = "103";
+        mathPrompt[9] = "2 x 17"; mathPromptAnswer[9] = "34";
+        mathPrompt[10] = "58 - 91"; mathPromptAnswer[10] = "-33";
+        mathPrompt[11] = "4 x 10"; mathPromptAnswer[11] = "40";
+        mathPrompt[12] = "73 + 21"; mathPromptAnswer[12] = "94";
+        mathPrompt[13] = "10 - 67"; mathPromptAnswer[13] = "-57";
+        mathPrompt[14] = "6 x 5"; mathPromptAnswer[14] = "30";
+        mathPrompt[15] = "117 - 79"; mathPromptAnswer[15] = "38";
+        mathPrompt[16] = "8 x 9"; mathPromptAnswer[16] = "72";
+        mathPrompt[17] = "-99 + 48"; mathPromptAnswer[17] = "-51";
+        mathPrompt[18] = "55 + 44"; mathPromptAnswer[18] = "99";
+        mathPrompt[19] = "1 x 10"; mathPromptAnswer[19] = "10";
+        mathPrompt[20] = "82 - 95"; mathPromptAnswer[20] = "-13";
+        mathPrompt[21] = "7 x 13"; mathPromptAnswer[21] = "91";
+        mathPrompt[22] = "60 + 29"; mathPromptAnswer[22] = "89";
+        mathPrompt[23] = "5 x 16"; mathPromptAnswer[23] = "80";
+        mathPrompt[24] = "-34 - 20"; mathPromptAnswer[24] = "-54";
+        mathPrompt[25] = "9 x 2"; mathPromptAnswer[25] = "18";
+        mathPrompt[26] = "-76 - 19"; mathPromptAnswer[26] = "-95";
+        mathPrompt[27] = "-100 - 45"; mathPromptAnswer[27] = "-145";
+        mathPrompt[28] = "8 x 4"; mathPromptAnswer[28] = "32";
+        mathPrompt[29] = "66 + 27"; mathPromptAnswer[29] = "93";
+        mathPrompt[30] = "3 x 7"; mathPromptAnswer[30] = "21";
+        mathPrompt[31] = "-88 + 47"; mathPromptAnswer[31] = "-41";
+        mathPrompt[32] = "5 x 9"; mathPromptAnswer[32] = "45";
+        mathPrompt[33] = "120 - 35"; mathPromptAnswer[33] = "85";
+        mathPrompt[34] = "2 x 10"; mathPromptAnswer[34] = "20";
+        mathPrompt[35] = "-150 + 229"; mathPromptAnswer[35] = "79";
+        mathPrompt[36] = "6 x 7"; mathPromptAnswer[36] = "42";
+        mathPrompt[37] = "97 + 13"; mathPromptAnswer[37] = "110";
+        mathPrompt[38] = "9 x 1"; mathPromptAnswer[38] = "9";
+        mathPrompt[39] = "-55 + 0"; mathPromptAnswer[39] = "-55";
+        mathPrompt[40] = "8 x 14"; mathPromptAnswer[40] = "112";
+        mathPrompt[41] = "102 + 17"; mathPromptAnswer[41] = "119";
+        mathPrompt[42] = "4 x 3"; mathPromptAnswer[42] = "12";
+        mathPrompt[43] = "-63 + 36"; mathPromptAnswer[43] = "-27";
+        mathPrompt[44] = "7 x 2"; mathPromptAnswer[44] = "14";
+        mathPrompt[45] = "88 + 33"; mathPromptAnswer[45] = "121";
+        mathPrompt[46] = "6 x 8"; mathPromptAnswer[46] = "48";
+        mathPrompt[47] = "-50 + 25"; mathPromptAnswer[47] = "-25";
+        mathPrompt[48] = "5 x 10"; mathPromptAnswer[48] = "50";
+        mathPrompt[49] = "90 - 200"; mathPromptAnswer[49] = "-110";
 
         Random rand = new Random();
-        int randomIndex = rand.nextInt(100);
+        int randomIndex = rand.nextInt(50);
         currentPrompt = mathPrompt[randomIndex];
     }
 
@@ -300,11 +149,21 @@ public class UI
 
         drawSubWindow(x, y, width, height);
 
-        x += gp.tileSize;
-        y += gp.tileSize;
+        // Center text
+        g2.setFont(font);
+        FontMetrics metrics = g2.getFontMetrics(font);
+        int textWidth = metrics.stringWidth(mp);
+        int textHeight = metrics.getHeight();
 
-        g2.drawString(mp, x, y);
+        // x position: center horizontally
+        int textX = x + (width - textWidth) / 2;
+
+        // y position: center vertically (baseline)
+        int textY = y + (height - textHeight) / 2 + metrics.getAscent();
+
+        g2.drawString(mp, textX, textY);
     }
+
 
     public void drawSubWindow(int x, int y, int width, int height)
     {
@@ -324,7 +183,7 @@ public class UI
         if (correctEnemySlain)
         {
             Random random = new Random();
-            currentPromptIndex = random.nextInt(100);
+            currentPromptIndex = random.nextInt(50);
             currentPrompt = mathPrompt[currentPromptIndex];
             correctEnemySlain = false;
 
