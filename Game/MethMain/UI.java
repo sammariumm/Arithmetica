@@ -89,7 +89,6 @@ public class UI
         mathPrompt[48] = "5 x 10"; mathPromptAnswer[48] = "50";
         mathPrompt[49] = "90 - 200"; mathPromptAnswer[49] = "-110";
 
-
         Random rand = new Random();
         int randomIndex = rand.nextInt(50);
         currentPrompt = mathPrompt[randomIndex];
